@@ -109,7 +109,7 @@ def page_shell(page_id: str, slug: str, book: str = "") -> str:
 
 
 def site_base(content: dict) -> str:
-    return ((content.get("site") or {}).get("baseUrl") or "https://erasmo-stasolla.zifirricchio.chatgpt.site").rstrip("/")
+    return ((content.get("site") or {}).get("baseUrl") or "https://erasmostasolla.it").rstrip("/")
 
 
 def abs_url(content: dict, path: str = "") -> str:

@@ -32,7 +32,7 @@ AGGIORNAMENTI
 Le modifiche fatte dal pannello aggiornano il file data/content.json. Le modifiche alla copia scaricata non aggiornano automaticamente la versione online.
 Per trasferire il sito su uno spazio web, carica tutto il contenuto di questa cartella mantenendone la struttura. Per un dominio diverso, aggiorna i riferimenti canonici nelle pagine e i file sitemap.xml e robots.txt.
 
-Sito online: https://erasmo-stasolla.zifirricchio.chatgpt.site
+Sito online: https://erasmostasolla.it
 Copia del 9 settembre 2026.
 
 CREDITI
