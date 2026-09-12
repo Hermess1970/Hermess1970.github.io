@@ -132,6 +132,45 @@ def social_same_as(site: dict) -> list[str]:
     return [str(site[k]).strip() for k in keys if site.get(k)]
 
 
+def isbn_digits(value) -> str:
+    return "".join(ch for ch in str(value or "") if ch.isdigit())
+
+
+def book_json_ld(book: dict, url: str, cover_image: str, same: list[str]) -> dict:
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": book.get("title"),
+        "author": {"@type": "Person", "name": "Erasmo Stasolla", "sameAs": same},
+        "inLanguage": "it",
+        "url": url,
+        "image": cover_image,
+        "bookFormat": "https://schema.org/Paperback",
+    }
+    if book.get("summary"):
+        ld["description"] = book["summary"]
+    if book.get("publisher"):
+        ld["publisher"] = {"@type": "Organization", "name": book["publisher"]}
+    if book.get("year"):
+        ld["datePublished"] = str(book["year"])
+    pages = str(book.get("pages") or "").strip()
+    if pages:
+        ld["numberOfPages"] = int(pages) if pages.isdigit() else pages
+    if book.get("genre"):
+        ld["genre"] = book["genre"]
+    isbn = isbn_digits(book.get("isbn"))
+    if isbn:
+        ld["isbn"] = isbn
+    offer_url = book.get("amazon") or book.get("publisherUrl")
+    if offer_url:
+        ld["offers"] = {
+            "@type": "Offer",
+            "url": offer_url,
+            "availability": "https://schema.org/InStock",
+        }
+    return ld
+
+
 def seo_head(title: str, desc: str, url: str, image: str, kind: str = "website", robots: str | None = None) -> str:
     title, desc, url, image = h(title), h(desc), h(url), h(image)
     extra = f'<meta name="robots" content="{h(robots)}">' if robots else ""
@@ -236,20 +275,11 @@ def refresh_seo(content: dict) -> None:
             continue
         title = f"{book.get('title') or 'Romanzo'} | Erasmo Stasolla"
         desc = book.get("summary") or book.get("intro") or default_desc
-        image = image_abs(content, book.get("shareImage") or book.get("cover") or site.get("shareImage"))
-        book_ld = {
-            "@context": "https://schema.org",
-            "@type": "Book",
-            "name": book.get("title"),
-            "author": {"@type": "Person", "name": "Erasmo Stasolla", "sameAs": same},
-            "inLanguage": "it",
-            "url": url,
-            "image": image,
-        }
-        if book.get("isbn"):
-            book_ld["isbn"] = book["isbn"]
+        og_image = image_abs(content, book.get("shareImage") or site.get("shareImage"))
+        cover_image = image_abs(content, book.get("cover") or site.get("shareImage"))
+        book_ld = book_json_ld(book, url, cover_image, same)
         ld = f'<script type="application/ld+json">{json.dumps(book_ld, ensure_ascii=False)}</script>'
-        html = inject_seo(html, seo_head(title, desc, url, image, "book"), ld)
+        html = inject_seo(html, seo_head(title, desc, url, og_image, "book"), ld)
         path.write_text(html, encoding="utf-8")
     write_robots_and_sitemap(content)
 

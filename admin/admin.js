@@ -245,7 +245,7 @@ const BOOK_FIELDS = [
   ["coverFocus", "Inquadratura della copertina", "select", IMAGE_FOCUS],
   ["coverFit", "Come entra nel riquadro", "select", IMAGE_FIT],
   ["coverNote", "Nota sotto la copertina"],
-  ["shareImage", "Immagine per i social (1200×630, vuoto = copertina)", "image"],
+  ["shareImage", "Immagine per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Metti la copertina a sinistra, titolo e «Erasmo Stasolla» a destra, su fondo scuro. Se è vuoto si usa l’immagine social del sito, non la copertina verticale."],
   ["slug", "Indirizzo (es. verita-sepolte)"],
   ["number", "Numero in elenco"],
   ["eyebrow", "Sopratitolo"],
@@ -259,7 +259,7 @@ const BOOK_FIELDS = [
   ["publisher", "Editore"],
   ["year", "Anno"],
   ["pages", "Pagine"],
-  ["isbn", "ISBN"],
+  ["isbn", "ISBN", null, null, "Solo cifre, senza trattini (es. 9791281763579)."],
   ["language", "Lingua"],
   ["amazon", "Collegamento Amazon"],
   ["publisherUrl", "Collegamento editore"],
@@ -696,8 +696,9 @@ function loginView(error) {
 }
 
 function fieldHtml(spec, data) {
-  const [name, label, kind, options] = spec;
+  const [name, label, kind, options, help] = spec;
   const val = data?.[name];
+  const helpHtml = help ? `<span class="help">${esc(help)}</span>` : "";
   if (kind === "kicker") {
     return `<h3 class="form-kicker">${esc(label)}</h3>`;
   }
@@ -730,7 +731,7 @@ function fieldHtml(spec, data) {
         <input type="hidden" name="${name}Height" value="${esc(data?.[name + "Height"] || "")}">
         <input type="hidden" name="${name}Orient" value="${esc(orient)}">
         <input type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml" data-image-for="${name}">
-        <span class="help">Carica così com’è, anche dal telefono. Verticale o orizzontale: il riquadro si adatta, senza un altro programma.</span>
+        ${helpHtml || `<span class="help">Carica così com’è, anche dal telefono. Verticale o orizzontale: il riquadro si adatta, senza un altro programma.</span>`}
       </div></div>`;
   }
   if (kind === "event") {
@@ -753,7 +754,7 @@ function fieldHtml(spec, data) {
     return colorField(name, label, data || {}, options || "#141b21");
   }
   const type = kind === "date" ? "date" : kind === "url" ? "url" : "text";
-  return `<label class="f"><span>${esc(label)}</span><input type="${type}" name="${name}" value="${esc(val || "")}"></label>`;
+  return `<label class="f"><span>${esc(label)}</span><input type="${type}" name="${name}" value="${esc(val || "")}">${helpHtml}</label>`;
 }
 
 function galleryItemHtml(it, i) {
@@ -1035,7 +1036,7 @@ function pageEditor(page, sectionId) {
             ${fieldHtml(["slug", "Indirizzo (vuoto = home)"], page)}
             ${fieldHtml(["seoTitle", "Titolo per Google e il browser"], page)}
             ${fieldHtml(["seoDescription", "Descrizione per Google e i social"], { seoDescription: page.seoDescription })}
-            ${fieldHtml(["shareImage", "Immagine per i social (1200×630)", "image"], page)}
+            ${fieldHtml(["shareImage", "Immagine per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Peso sotto 1,5 MB. Compare quando condividi il link su WhatsApp, Facebook e X. Non è la copertina del libro."], page)}
           </div>
         </form>
         ${sectionForm}
@@ -1387,8 +1388,7 @@ function siteSettings() {
       <p class="help">Incolla solo i collegamenti che usi. Quelli vuoti non si vedono. Facebook e WhatsApp sono già impostati. Il numero compare in basso e nel pulsante verde.</p>
       <h3 class="form-kicker">SEO e condivisione</h3>
       ${fieldHtml(["baseUrl", "Indirizzo pubblico del sito (https://…)"], s)}
-      ${fieldHtml(["shareImage", "Immagine predefinita per i social (1200×630)", "image"], s)}
-      <p class="help">Questa foto appare quando condividi una pagina su Facebook, WhatsApp, Instagram e X. Ogni pagina o romanzo può averne una propria.</p>
+      ${fieldHtml(["shareImage", "Immagine predefinita per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Peso sotto 1,5 MB. Compare quando condividi un link su WhatsApp, Facebook e X. Ogni pagina o romanzo può averne una propria. Non usare una copertina verticale."], s)}
       `}
       <h3 class="form-kicker">Colori e pulsanti</h3>
       ${colorField("colorInk", "Colore testo", s, "#141b21")}
