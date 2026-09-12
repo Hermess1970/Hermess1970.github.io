@@ -363,7 +363,7 @@
       "slug": "",
       "title": "Home",
       "seoTitle": "Romanzi, storia e memoria | Erasmo Stasolla",
-      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, i nuovi progetti narrativi, le presentazioni e la rassegna stampa.",
+      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, le presentazioni e la rassegna stampa.",
       "inNav": false,
       "locked": true,
       "sections": [
@@ -416,7 +416,7 @@
         {
           "id": "s-upcoming",
           "type": "bookList",
-          "visible": true,
+          "visible": false,
           "data": {
             "eyebrow": "Le prossime storie",
             "title": "Dentro nuovi romanzi.",
@@ -449,7 +449,7 @@
       "slug": "romanzi",
       "title": "Romanzi",
       "seoTitle": "I romanzi | Erasmo Stasolla",
-      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte, Peppino e i progetti narrativi in preparazione.",
+      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte e Peppino.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -679,7 +679,7 @@
         {
           "id": "s-q-next",
           "type": "text",
-          "visible": true,
+          "visible": false,
           "data": {
             "title": "Le prossime opere.",
             "body": "I collegamenti per gli altri romanzi saranno aggiunti alla loro pubblicazione.",
@@ -733,7 +733,7 @@
         {
           "id": "s-c-3",
           "type": "text",
-          "visible": true,
+          "visible": false,
           "data": {
             "title": "Opere in preparazione",
             "body": "Le descrizioni dei nuovi progetti presentano il percorso narrativo dell’autore. I titoli in preparazione non sono indicati come disponibili all’acquisto."
