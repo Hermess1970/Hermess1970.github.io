@@ -293,6 +293,20 @@ body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .menu-button{border-r
 
 .footer-wa{font-size:.875rem;color:var(--muted);margin-top:12px;max-width:320px;line-height:1.5}
 .footer-wa a{color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px}
+.footer-share{margin-top:28px}
+.footer-share-label{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.share-links{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.share-btn{width:42px;height:42px;border:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;padding:0;cursor:pointer;box-shadow:0 2px 8px #141b2118;transition:transform .15s ease,box-shadow .15s ease}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px #141b2128;color:#fff}
+.share-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.share-btn svg{width:18px;height:18px;display:block}
+.share-wa{background:#25D366}
+.share-fb{background:#1877F2}
+.share-x{background:#111}
+.share-ig{background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)}
+.share-copy{background:#141b21}
+.share-note{margin-top:12px;font-size:.8rem;color:var(--muted)}
+@media print{.footer-share{display:none!important}}
 .wa-fab{
   position:fixed;
   z-index:40;

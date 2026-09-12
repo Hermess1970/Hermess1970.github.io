@@ -165,13 +165,15 @@
         <p>${esc(site.footerText || "")}</p>
         ${waHref(site) ? `<p class="footer-wa">Per presentazioni e richieste: <a href="${esc(waHref(site))}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(waPretty(site))}</a></p>` : ""}
         <nav class="footer-links" aria-label="Navigazione nel piè di pagina">${links}</nav>
-      </div>      <div class="footer-bottom">
+      </div>
+      ${shareBar()}
+      <div class="footer-bottom">
         <span>${esc(site.copyright || "")}</span>
-        ${socialLinks(site)}
         <a href="${href("crediti/")}">Crediti e fonti</a>
         <a class="footer-access" href="${href("admin/")}">Accesso</a>
         <a href="#contenuto">Torna all’inizio ↑</a>
       </div></div>`;
+      bindShare(footer);
       const access = footer.querySelector(".footer-access");
       if (access && !builderMode) {
         fetch("/api/session", { credentials: "same-origin" }).then((r) => r.json()).then((d) => {
@@ -182,16 +184,78 @@
     placeWhatsApp(site);
   }
 
-  function socialLinks(site) {
-    const items = [
-      ["facebook", "Facebook"], ["instagram", "Instagram"], ["youtube", "YouTube"],
-      ["tiktok", "TikTok"], ["x", "X"], ["threads", "Threads"], ["linkedin", "LinkedIn"],
-    ].filter(([key]) => site[key]);
-    const mail = site.email ? `<a href="mailto:${esc(site.email)}">Email</a>` : "";
-    const wa = waHref(site) ? `<a href="${esc(waHref(site))}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : "";
-    const nets = items.map(([key, label]) => `<a href="${esc(site[key])}" target="_blank" rel="noopener noreferrer me">${esc(label)}</a>`).join("");
-    if (!nets && !mail && !wa) return "";
-    return `<nav class="social-links" aria-label="Social">${nets}${wa}${mail}</nav>`;
+  function pageShare() {
+    const url = document.querySelector('link[rel="canonical"]')?.href
+      || document.querySelector('meta[property="og:url"]')?.content
+      || location.href.split(/[?#]/)[0];
+    const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
+    return { url, title };
+  }
+
+  const SHARE_ICONS = {
+    wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.28-.14-1.65-.81-1.9-.91-.26-.09-.44-.14-.63.14-.19.28-.72.91-.88 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.63-1.51-.86-2.07-.23-.55-.46-.47-.63-.48h-.54c-.19 0-.49.07-.74.35-.26.28-.97.95-.97 2.31s1 2.68 1.13 2.86c.14.19 1.96 2.99 4.75 4.19.66.29 1.18.46 1.59.58.67.21 1.27.18 1.75.11.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.54-.32zM12.04 21.8h-.01c-1.81 0-3.6-.49-5.16-1.41L3.3 21.4l1.05-3.5a9.87 9.87 0 0 1-1.52-5.32C2.83 7.06 6.93 3 12.04 3c2.43 0 4.71.94 6.43 2.66A8.96 8.96 0 0 1 21.15 12.2c0 5.11-4.1 9.6-9.11 9.6zm0-19.6C6.27 2.2 1.63 6.8 1.63 12.58c0 1.86.49 3.67 1.43 5.27L1.2 22.8l5.1-1.34a10.9 10.9 0 0 0 5.73 1.55h.01c5.77 0 10.47-4.66 10.47-10.4 0-2.78-1.09-5.39-3.06-7.35A10.4 10.4 0 0 0 12.04 2.2z"/></svg>',
+    fb: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.4V9.84c0-2.37 1.4-3.69 3.56-3.69 1.03 0 2.11.19 2.11.19v2.32h-1.19c-1.17 0-1.54.73-1.54 1.48v1.78h2.62l-.42 2.91h-2.2V22c4.78-.75 8.44-4.91 8.44-9.93z"/></svg>',
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-4.71-6.23-5.4 6.23H2.74l7.73-8.84L1.25 2.25h6.83l4.25 5.62 6.91-5.62zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg>',
+    ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.7A2.1 2.1 0 1 0 14.1 12 2.1 2.1 0 0 0 12 9.9zM17.35 6.65a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 1 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+  };
+
+  function shareBar() {
+    const { url, title } = pageShare();
+    const text = encodeURIComponent(title + " " + url);
+    const enc = encodeURIComponent(url);
+    const encTitle = encodeURIComponent(title);
+    return `<div class="footer-share">
+      <p class="footer-share-label">Condividi questa pagina</p>
+      <nav class="share-links" aria-label="Condividi questa pagina">
+        <a class="share-btn share-wa" href="https://wa.me/?text=${text}" target="_blank" rel="noopener noreferrer" aria-label="Condividi su WhatsApp">${SHARE_ICONS.wa}</a>
+        <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener noreferrer" aria-label="Condividi su Facebook">${SHARE_ICONS.fb}</a>
+        <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=${encTitle}&amp;url=${enc}" target="_blank" rel="noopener noreferrer" aria-label="Condividi su X">${SHARE_ICONS.x}</a>
+        <button class="share-btn share-ig" type="button" data-share="instagram" aria-label="Copia il link per Instagram">${SHARE_ICONS.ig}</button>
+        <button class="share-btn share-copy" type="button" data-share="copy" aria-label="Copia link">${SHARE_ICONS.copy}</button>
+      </nav>
+      <p class="share-note" hidden></p>
+    </div>`;
+  }
+
+  function copyText(value, note, message) {
+    const done = (ok) => {
+      note.hidden = false;
+      note.textContent = ok ? message : value;
+    };
+    const fallback = () => {
+      const field = document.createElement("textarea");
+      field.value = value;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.left = "-9999px";
+      document.body.appendChild(field);
+      field.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch {}
+      field.remove();
+      done(ok);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(() => done(true)).catch(fallback);
+      return;
+    }
+    fallback();
+  }
+
+  function bindShare(footer) {
+    const note = footer.querySelector(".share-note");
+    if (!note) return;
+    footer.querySelectorAll("[data-share]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const { url } = pageShare();
+        if (el.dataset.share === "instagram") {
+          copyText(url, note, "Link copiato. Incollalo su Instagram.");
+        } else {
+          copyText(url, note, "Link copiato.");
+        }
+      });
+    });
   }
 
   function imageFocus(focus) {
