@@ -291,3 +291,40 @@ body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .menu-button{border-r
 .book-press .press-item{border-top:1px solid var(--line)}
 .book-press h2{margin-bottom:8px}
 
+.footer-wa{font-size:.875rem;color:var(--muted);margin-top:12px;max-width:320px;line-height:1.5}
+.footer-wa a{color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px}
+.wa-fab{
+  position:fixed;
+  z-index:40;
+  right:max(16px, env(safe-area-inset-right, 0px));
+  bottom:max(16px, env(safe-area-inset-bottom, 0px));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  padding:0;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  box-shadow:0 8px 20px #128c7e55;
+  touch-action:manipulation;
+}
+.wa-fab:hover{background:#20bd5a;transform:translateY(-2px)}
+.wa-fab:focus-visible{outline:3px solid #25D366;outline-offset:3px}
+.wa-fab svg{
+  width:26px !important;
+  height:26px !important;
+  max-width:26px !important;
+  max-height:26px !important;
+  flex:none;
+}
+.wa-fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:600px){
+  .wa-fab{width:48px;height:48px}
+  .wa-fab svg{width:24px !important;height:24px !important;max-width:24px !important;max-height:24px !important}
+  .site-footer{padding-bottom:80px}
+}
+.is-builder .wa-fab{display:none!important}
+@media print{.wa-fab,.footer-wa{display:none!important}}
+

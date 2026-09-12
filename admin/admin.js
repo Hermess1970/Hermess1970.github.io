@@ -1382,7 +1382,9 @@ function siteSettings() {
       ${fieldHtml(["threads", "Threads", "url"], s)}
       ${fieldHtml(["linkedin", "LinkedIn", "url"], s)}
       ${fieldHtml(["email", "Email pubblica"], s)}
-      <p class="help">Incolla solo i collegamenti che usi. Quelli vuoti non si vedono. Facebook è già impostato.</p>
+      ${fieldHtml(["whatsapp", "WhatsApp (numero, es. 3669240009)"], s)}
+      ${fieldHtml(["whatsappMessage", "Primo messaggio su WhatsApp"], s)}
+      <p class="help">Incolla solo i collegamenti che usi. Quelli vuoti non si vedono. Facebook e WhatsApp sono già impostati. Il numero compare in basso e nel pulsante verde.</p>
       <h3 class="form-kicker">SEO e condivisione</h3>
       ${fieldHtml(["baseUrl", "Indirizzo pubblico del sito (https://…)"], s)}
       ${fieldHtml(["shareImage", "Immagine predefinita per i social (1200×630)", "image"], s)}

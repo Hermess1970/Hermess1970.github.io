@@ -4,7 +4,7 @@
     "tagline": "Romanzi · Storia · Memoria",
     "footerText": "Dalla Terra delle Gravine alle domande del nostro tempo.",
     "copyright": "© 2026 Erasmo Stasolla",
-    "baseUrl": "https://erasmostasolla.it",
+    "baseUrl": "https://erasmo-stasolla.zifirricchio.chatgpt.site",
     "portrait": "assets/erasmo-stasolla-portrait.jpg",
     "portraitCaption": "Erasmo Stasolla",
     "portraitNote": "Una voce dalla Terra delle Gravine",
@@ -16,7 +16,9 @@
     "x": "",
     "threads": "",
     "linkedin": "",
-    "email": ""
+    "email": "",
+    "whatsapp": "3669240009",
+    "whatsappMessage": "Buongiorno, le scrivo dal sito di Erasmo Stasolla."
   },
   "menu": [
     {
@@ -57,14 +59,14 @@
       "href": "romanzi/"
     },
     {
-      "id": "f-incontri",
-      "label": "Gli incontri",
-      "href": "incontri/"
-    },
-    {
       "id": "f-stampa",
       "label": "La rassegna stampa",
       "href": "materiali/"
+    },
+    {
+      "id": "f-incontri",
+      "label": "Gli incontri",
+      "href": "incontri/"
     }
   ],
   "books": [
@@ -424,6 +426,8 @@
             "buttonHref": "incontri/",
             "linkLabel": "Rassegna stampa",
             "linkHref": "materiali/",
+            "link2Label": "WhatsApp",
+            "link2Href": "https://wa.me/393669240009?text=Buongiorno%2C%20le%20scrivo%20dal%20sito%20di%20Erasmo%20Stasolla.",
             "eventId": "palagianello-2025"
           }
         }
@@ -513,7 +517,9 @@
             "buttonLabel": "Esplora i romanzi",
             "buttonHref": "romanzi/",
             "linkLabel": "Scarica la biografia",
-            "linkHref": "assets/biografia-erasmo-stasolla.txt"
+            "linkHref": "assets/biografia-erasmo-stasolla.txt",
+            "link2Label": "Scrivi su WhatsApp",
+            "link2Href": "https://wa.me/393669240009?text=Buongiorno%2C%20le%20scrivo%20dal%20sito%20di%20Erasmo%20Stasolla."
           }
         }
       ]

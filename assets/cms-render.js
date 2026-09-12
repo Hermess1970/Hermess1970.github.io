@@ -104,6 +104,40 @@
     if (site.buttonStyle === "pill") document.body.classList.add("btn-pill");
   }
 
+  function waDigits(v) {
+    let d = String(v || "").replace(/\D/g, "");
+    if (d.startsWith("00")) d = d.slice(2);
+    if (d && !d.startsWith("39") && d.length === 10) d = "39" + d;
+    return d;
+  }
+  function waHref(site) {
+    const n = waDigits(site.whatsapp);
+    if (!n) return "";
+    const msg = site.whatsappMessage || "Buongiorno, le scrivo dal sito di Erasmo Stasolla.";
+    return "https://wa.me/" + n + "?text=" + encodeURIComponent(msg);
+  }
+  function waPretty(site) {
+    const d = waDigits(site.whatsapp);
+    const local = d.startsWith("39") ? d.slice(2) : d;
+    return local.replace(/(\d{3})(\d{3})(\d+)/, "$1 $2 $3") || local;
+  }
+  const WA_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.28-.14-1.65-.81-1.9-.91-.26-.09-.44-.14-.63.14-.19.28-.72.91-.88 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.63-1.51-.86-2.07-.23-.55-.46-.47-.63-.48h-.54c-.19 0-.49.07-.74.35-.26.28-.97.95-.97 2.31s1 2.68 1.13 2.86c.14.19 1.96 2.99 4.75 4.19.66.29 1.18.46 1.59.58.67.21 1.27.18 1.75.11.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.54-.32zM12.04 21.8h-.01c-1.81 0-3.6-.49-5.16-1.41L3.3 21.4l1.05-3.5a9.87 9.87 0 0 1-1.52-5.32C2.83 7.06 6.93 3 12.04 3c2.43 0 4.71.94 6.43 2.66A8.96 8.96 0 0 1 21.15 12.2c0 5.11-4.1 9.6-9.11 9.6zm0-19.6C6.27 2.2 1.63 6.8 1.63 12.58c0 1.86.49 3.67 1.43 5.27L1.2 22.8l5.1-1.34a10.9 10.9 0 0 0 5.73 1.55h.01c5.77 0 10.47-4.66 10.47-10.4 0-2.78-1.09-5.39-3.06-7.35A10.4 10.4 0 0 0 12.04 2.2z"/></svg>';
+
+  function placeWhatsApp(site) {
+    document.querySelectorAll(".wa-fab").forEach((el) => el.remove());
+    const url = waHref(site);
+    if (!url || builderMode) return;
+    const num = waPretty(site);
+    const a = document.createElement("a");
+    a.className = "wa-fab";
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.setAttribute("aria-label", "Scrivi su WhatsApp" + (num ? " al " + num : ""));
+    a.innerHTML = `${WA_ICON}<span>WhatsApp${num ? " " + num : ""}</span>`;
+    document.body.appendChild(a);
+  }
+
   function chrome(content, currentSlug) {
     const site = content.site || {};
     applyTheme(site);
@@ -129,6 +163,7 @@
       footer.innerHTML = `<div class="container"><div class="footer-top">
         <a class="brand" href="${href("")}">${esc(site.name || "")}<small>${esc(site.tagline || "")}</small></a>
         <p>${esc(site.footerText || "")}</p>
+        ${waHref(site) ? `<p class="footer-wa">Per presentazioni e richieste: <a href="${esc(waHref(site))}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(waPretty(site))}</a></p>` : ""}
         <nav class="footer-links" aria-label="Navigazione nel piè di pagina">${links}</nav>
       </div>      <div class="footer-bottom">
         <span>${esc(site.copyright || "")}</span>
@@ -144,6 +179,7 @@
         }).catch(() => {});
       }
     }
+    placeWhatsApp(site);
   }
 
   function socialLinks(site) {
@@ -152,9 +188,10 @@
       ["tiktok", "TikTok"], ["x", "X"], ["threads", "Threads"], ["linkedin", "LinkedIn"],
     ].filter(([key]) => site[key]);
     const mail = site.email ? `<a href="mailto:${esc(site.email)}">Email</a>` : "";
+    const wa = waHref(site) ? `<a href="${esc(waHref(site))}" target="_blank" rel="noopener noreferrer">WhatsApp</a>` : "";
     const nets = items.map(([key, label]) => `<a href="${esc(site[key])}" target="_blank" rel="noopener noreferrer me">${esc(label)}</a>`).join("");
-    if (!nets && !mail) return "";
-    return `<nav class="social-links" aria-label="Social">${nets}${mail}</nav>`;
+    if (!nets && !mail && !wa) return "";
+    return `<nav class="social-links" aria-label="Social">${nets}${wa}${mail}</nav>`;
   }
 
   function imageFocus(focus) {

@@ -103,7 +103,7 @@ def page_shell(page_id: str, slug: str, book: str = "") -> str:
     root = "../" * depth_of(slug)
     book_attr = f' data-book="{book}"' if book else ""
     return f"""<!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#141b21"><title>Erasmo Stasolla</title><link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/editorial.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{root}assets/styles.css"><script src="{root}assets/site.js" defer></script><script src="{root}assets/cms-render.js?v=acc1" defer></script></head>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#141b21"><title>Erasmo Stasolla</title><link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml"><link rel="preload" href="{root}assets/editorial.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{root}assets/styles.css?v=wa2"><script src="{root}assets/site.js" defer></script><script src="{root}assets/cms-render.js?v=wa2" defer></script></head>
 <body data-page="{page_id}"{book_attr} data-root="{root}"><!-- pagina gestita dal pannello --><a class="skip" href="#contenuto">Vai al contenuto</a><header class="site-header"><div class="container header-inner"><a class="brand" href="{root}index.html">Erasmo Stasolla<small>Romanzi · Storia · Memoria</small></a><button class="menu-button" type="button" aria-controls="main-nav" aria-expanded="false">Menu</button><nav class="nav" id="main-nav" aria-label="Navigazione principale"></nav></div></header><main id="contenuto"></main><footer class="site-footer"></footer></body></html>
 """
 
@@ -183,6 +183,13 @@ def refresh_seo(content: dict) -> None:
         "image": image_abs(content, site.get("portrait")),
         "sameAs": same,
     }
+    wa = "".join(ch for ch in str(site.get("whatsapp") or "") if ch.isdigit())
+    if wa.startswith("00"):
+        wa = wa[2:]
+    if wa and not wa.startswith("39") and len(wa) == 10:
+        wa = "39" + wa
+    if wa:
+        person["telephone"] = "+" + wa
     website = {
         "@context": "https://schema.org",
         "@type": "WebSite",
