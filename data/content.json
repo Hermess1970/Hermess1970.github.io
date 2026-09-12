@@ -1,0 +1,737 @@
+{
+  "site": {
+    "name": "Erasmo Stasolla",
+    "tagline": "Romanzi · Storia · Memoria",
+    "footerText": "Dalla Terra delle Gravine alle domande del nostro tempo.",
+    "copyright": "© 2026 Erasmo Stasolla",
+    "baseUrl": "https://erasmo-stasolla.zifirricchio.chatgpt.site",
+    "portrait": "assets/erasmo-stasolla-portrait.jpg",
+    "portraitCaption": "Erasmo Stasolla",
+    "portraitNote": "Una voce dalla Terra delle Gravine",
+    "shareImage": "assets/og-share.jpg",
+    "facebook": "https://www.facebook.com/stasollaerasmo",
+    "instagram": "",
+    "youtube": "",
+    "tiktok": "",
+    "x": "",
+    "threads": "",
+    "linkedin": "",
+    "email": ""
+  },
+  "menu": [
+    {
+      "id": "m-romanzi",
+      "label": "Romanzi",
+      "href": "romanzi/",
+      "style": "link"
+    },
+    {
+      "id": "m-autore",
+      "label": "L’autore",
+      "href": "autore/",
+      "style": "link"
+    },
+    {
+      "id": "m-incontri",
+      "label": "Incontri",
+      "href": "incontri/",
+      "style": "link"
+    },
+    {
+      "id": "m-materiali",
+      "label": "Rassegna stampa",
+      "href": "materiali/",
+      "style": "link"
+    },
+    {
+      "id": "m-acquista",
+      "label": "Acquista",
+      "href": "acquista/",
+      "style": "buy"
+    }
+  ],
+  "footer": [
+    {
+      "id": "f-libri",
+      "label": "I libri",
+      "href": "romanzi/"
+    },
+    {
+      "id": "f-incontri",
+      "label": "Gli incontri",
+      "href": "incontri/"
+    },
+    {
+      "id": "f-stampa",
+      "label": "La rassegna stampa",
+      "href": "materiali/"
+    }
+  ],
+  "books": [
+    {
+      "id": "verita-sepolte",
+      "slug": "verita-sepolte",
+      "number": "01",
+      "title": "Verità sepolte",
+      "eyebrow": "Thriller d’inchiesta · 2025",
+      "status": "published",
+      "statusLabel": "Disponibile",
+      "genre": "Thriller d’inchiesta",
+      "summary": "Un giornalista, un’inchiesta pericolosa, le zone d’ombra del potere. Il romanzo d’esordio, tra Roma e la Puglia.",
+      "intro": "Il romanzo d’esordio di Erasmo Stasolla.",
+      "cover": "assets/verita-sepolte-cover.jpg",
+      "coverNote": "Il romanzo d’esordio · 2025",
+      "heading": "Quanto costa\ncercare la verità?",
+      "body": "Andrea Lorusso indaga su una metropolitana mai completata a Roma. Appalti fantasma e morti sospette lo conducono dentro un sistema che sa difendere i propri segreti. Mentre l’inchiesta si allarga, il prezzo della verità diventa sempre più personale.\n\nTra Roma, Bari e Palagianello, la sua ricerca attraversa anche una dimensione onirica: gli incontri immaginari con protagonisti della storia italiana intrecciano memoria civile e tensione narrativa. Al centro resta una scelta: fino a dove spingersi per raccontare ciò che altri vogliono nascondere?",
+      "publisher": "Giacovelli Editore",
+      "year": "2025",
+      "pages": "239",
+      "isbn": "9791281763579",
+      "language": "Italiano",
+      "amazon": "https://www.amazon.it/Verit%C3%A0-sepolte-Erasmo-Stasolla/dp/B0F365GCXD",
+      "publisherUrl": "https://www.giacovellieditore.com/product/verita-sepolte/",
+      "featured": true
+    },
+    {
+      "id": "cinquantacinque-giorni",
+      "slug": "cinquantacinque-giorni",
+      "number": "02",
+      "title": "Cinquantacinque giorni",
+      "eyebrow": "Romanzo storico · In preparazione",
+      "status": "upcoming",
+      "statusLabel": "In preparazione",
+      "genre": "Romanzo storico",
+      "summary": "Il caso Moro, un nonno e un nipote. La storia di un’assenza che continua a interrogare.",
+      "intro": "Il caso Moro, un nonno e un nipote. La storia di un’assenza che continua a interrogare.",
+      "cover": "",
+      "coverNote": "",
+      "heading": "Un’assenza dentro la Storia.",
+      "body": "Luca ascolta il nonno Vittorio, professore universitario, ricostruire i cinquantacinque giorni del sequestro Moro. Fra carte, ricordi e domande, un dettaglio lo trattiene: la vicenda del fioraio Antonio Spiriticchio, che la mattina del 16 marzo 1978 non era al suo posto in via Fani.\n\nDa quello spunto prende forma un romanzo nel romanzo. La ricerca documentaria sostiene il racconto storico; l’invenzione narrativa esplora il peso di essere sopravvissuti per un’assenza e il bisogno di dare un senso a ciò che è accaduto. Una storia pensata anche per avvicinare i giovani a una pagina decisiva del nostro Paese.",
+      "themes": "Memoria civile · Dialogo fra generazioni · Realtà e invenzione",
+      "publisher": "",
+      "year": "",
+      "pages": "",
+      "isbn": "",
+      "language": "Italiano",
+      "amazon": "",
+      "publisherUrl": "",
+      "featured": false
+    },
+    {
+      "id": "cento-nomi",
+      "slug": "cento-nomi",
+      "number": "03",
+      "title": "Cento nomi",
+      "eyebrow": "Romanzo di spionaggio · In preparazione",
+      "status": "upcoming",
+      "statusLabel": "In preparazione",
+      "genre": "Romanzo di spionaggio",
+      "summary": "Il carcere di Trani, gli anni di piombo e un uomo dalle identità sfuggenti.",
+      "intro": "Il carcere di Trani, gli anni di piombo e un uomo dalle identità sfuggenti.",
+      "cover": "",
+      "coverNote": "",
+      "heading": "Ogni nome nasconde una storia.",
+      "body": "Negli anni di piombo, il carcere di Trani diventa il punto d’incontro di destini che oltrepassano le sue mura. Eupremio Palmieri, giovane agente di custodia, osserva Richard Varelton, un detenuto capace di cambiare volto e identità.\n\nRealtà documentata e finzione si intrecciano in una storia di silenzi, rivolte e rapporti di potere. A tenere insieme il racconto è la memoria di un uomo e ciò che, dopo molti anni, può ancora essere affidato a un figlio.",
+      "themes": "Anni di piombo · Carcere di Trani · Identità e memoria",
+      "publisher": "",
+      "year": "",
+      "pages": "",
+      "isbn": "",
+      "language": "Italiano",
+      "amazon": "",
+      "publisherUrl": "",
+      "featured": false
+    },
+    {
+      "id": "peppino",
+      "slug": "peppino",
+      "number": "04",
+      "title": "Peppino",
+      "eyebrow": "Romanzo di memoria familiare · 2026",
+      "status": "published",
+      "statusLabel": "Disponibile",
+      "genre": "Romanzo di memoria familiare",
+      "summary": "Una vita di lavoro e affetti, nella Palagianello che cambia.",
+      "intro": "Ci sono uomini che attraversano la vita senza fare rumore. Non finiscono nei libri di storia, non lasciano monumenti, eppure sulle loro spalle sono cresciute famiglie e intere generazioni.\n\nPeppino è uno di loro.\n\nDalla campagna di Palagianello al lavoro operaio, dalla terra alle trasformazioni del dopoguerra, la sua vita accompagna quella di un Sud che cambia lentamente, tra sacrifici, dignità, crisi, speranze e figli ai quali offrire un futuro diverso.",
+      "cover": "assets/uploads/PEPPINO.jpg",
+      "coverNote": "",
+      "heading": "Peppino",
+      "body": "Nella Palagianello del secondo Novecento, la vita di Peppino attraversa il lavoro, le difficoltà economiche e la responsabilità di crescere una famiglia. Sono i gesti quotidiani, gli affetti e l’aiuto di una comunità a dare misura alla sua storia.\n\nUn romanzo che nasce dalla memoria familiare e si apre a un’esperienza condivisa: quella di figli, madri e padri che hanno costruito il futuro con fatica, senza sapere quanto sarebbe rimasto di loro.",
+      "themes": "Palagianello · Famiglia · Lavoro e dignità",
+      "publisher": "Independently published",
+      "year": "2026",
+      "pages": "141",
+      "isbn": "979-8193395935",
+      "language": "Italiano",
+      "amazon": "https://www.amazon.it/dp/B0HJ8PW3Z1?spcref=PRINT_LISTING",
+      "publisherUrl": "",
+      "featured": true,
+      "coverFocus": "center",
+      "shareImage": ""
+    },
+    {
+      "id": "sogni-oltre-il-velo",
+      "slug": "sogni-oltre-il-velo",
+      "number": "05",
+      "title": "Sogni oltre il velo",
+      "eyebrow": "Thriller psicologico · In preparazione",
+      "status": "upcoming",
+      "statusLabel": "In preparazione",
+      "genre": "Thriller psicologico",
+      "summary": "Mottola, la Gravina di Petruscio e il confine inquieto fra sogno e realtà.",
+      "intro": "Mottola, la Gravina di Petruscio e il confine inquieto fra sogno e realtà.",
+      "cover": "",
+      "coverNote": "",
+      "heading": "Al risveglio, qualcosa rimane.",
+      "body": "Per Alessandro, il confine fra ciò che vive e ciò che sogna diventa sempre meno stabile. Le sue domande lo conducono in un percorso dove la memoria, la percezione e i legami personali possono incrinare ogni certezza.\n\nMottola e la Gravina di Petruscio appartengono al cuore della storia: luoghi da attraversare e da riconoscere, capaci di custodire inquietudini e ricordi. Un thriller psicologico in cui il mistero si avvicina alla parte più intima dell’esperienza umana.",
+      "themes": "Sogno e percezione · Mottola · Gravina di Petruscio",
+      "publisher": "",
+      "year": "",
+      "pages": "",
+      "isbn": "",
+      "language": "Italiano",
+      "amazon": "",
+      "publisherUrl": "",
+      "featured": false
+    },
+    {
+      "id": "amuni",
+      "slug": "amuni",
+      "number": "06",
+      "title": "Amunì",
+      "eyebrow": "Romanzo storico · In preparazione",
+      "status": "upcoming",
+      "statusLabel": "In preparazione",
+      "genre": "Romanzo storico",
+      "summary": "Mauro De Mauro, Palermo e le domande lasciate da un giornalista scomparso.",
+      "intro": "Mauro De Mauro, Palermo e le domande lasciate da un giornalista scomparso.",
+      "cover": "",
+      "coverNote": "",
+      "heading": "Una voce che manca ancora.",
+      "body": "Il progetto narrativo dedicato a Mauro De Mauro attraversa il mondo del giornalismo, la Palermo del suo tempo e le domande rimaste aperte attorno alla sua scomparsa.\n\nAl centro c’è il desiderio di rendere comprensibile quell’epoca anche a chi non l’ha vissuta: spiegare i protagonisti, restituire il lavoro di una redazione e distinguere i fatti documentati dalle parti affidate alla finzione, senza inventare una soluzione alla vicenda.",
+      "themes": "Mauro De Mauro · Palermo · Giornalismo e memoria",
+      "publisher": "",
+      "year": "",
+      "pages": "",
+      "isbn": "",
+      "language": "Italiano",
+      "amazon": "",
+      "publisherUrl": "",
+      "featured": false
+    }
+  ],
+  "events": [
+    {
+      "id": "palagianello-2025",
+      "status": "past",
+      "date": "2025-05-09",
+      "day": "09",
+      "month": "maggio",
+      "monthShort": "MAG",
+      "year": "2025",
+      "place": "Castello Caracciolo · Palagianello",
+      "city": "Palagianello",
+      "title": "Verità sepolte a Palagianello",
+      "summary": "La presentazione del romanzo nel giorno dedicato alla memoria delle vittime del terrorismo. Un incontro fra lettori, testimonianze e storia del nostro Paese.",
+      "note": "Presentazione delle ore 18:30.",
+      "linkLabel": "Il racconto su ANSA",
+      "linkHref": "https://www.ansa.it/puglia/notizie/2025/05/11/presentato-a-palagianello-verita-sepolte-sara-al-salone-del-libro-di-torino_a7ec0165-f919-4ff2-a7ca-1bd9be9332a1.html",
+      "contextTitle": "Una serata per la memoria.",
+      "contextBody": "L’appuntamento di Palagianello è stato organizzato dall’associazione Amici della Sicurezza Terra delle Gravine con il MUTE e il patrocinio del Comune. Il programma annunciava la conduzione di Francesco Fabbri, affiancato da Domenico Caragnano, e le letture di Rossella D’Onghia e Antonio Altamura.",
+      "contextLinkLabel": "Il programma su ViviWebTv",
+      "contextLinkHref": "https://www.viviwebtv.it/articolo/verita-sepolte-a-palagianello-in-memoria-delle-vittime-del-terrorismo_103956",
+      "homeEyebrow": "Dall’archivio · 2025",
+      "homeLine": "Verità sepolte al Castello Caracciolo"
+    }
+  ],
+  "press": [
+    {
+      "id": "ansa-libri",
+      "source": "ANSA · Libri",
+      "dateLabel": "5 aprile 2025",
+      "title": "Verità sepolte, nei misteri d’Italia per capire il presente",
+      "summary": "L’approfondimento dedicato al romanzo d’esordio e all’inchiesta del suo protagonista.",
+      "href": "https://www.ansa.it/sito/notizie/cultura/libri/2025/04/04/verita-sepolte-nei-misteri-ditalia-per-capire-presente_209b7195-9e06-40b1-9493-0dbaa960eb07.html",
+      "bookId": "verita-sepolte",
+      "topic": "libro"
+    },
+    {
+      "id": "ansa-puglia",
+      "source": "ANSA · Puglia",
+      "dateLabel": "11 maggio 2025",
+      "title": "Da Palagianello al Salone del Libro di Torino",
+      "summary": "Il racconto della serata al Castello Caracciolo e l’annuncio della presenza del libro al Salone di Torino 2025.",
+      "href": "https://www.ansa.it/puglia/notizie/2025/05/11/presentato-a-palagianello-verita-sepolte-sara-al-salone-del-libro-di-torino_a7ec0165-f919-4ff2-a7ca-1bd9be9332a1.html",
+      "bookId": "verita-sepolte",
+      "topic": "presentazione",
+      "eventId": "palagianello-2025"
+    },
+    {
+      "id": "viviwebtv",
+      "source": "ViviWebTv",
+      "dateLabel": "6 maggio 2025",
+      "title": "Un incontro nel segno della memoria civile",
+      "summary": "La presentazione a Palagianello: il programma, gli organizzatori e le voci della serata.",
+      "href": "https://www.viviwebtv.it/articolo/verita-sepolte-a-palagianello-in-memoria-delle-vittime-del-terrorismo_103956",
+      "bookId": "verita-sepolte",
+      "topic": "presentazione",
+      "eventId": "palagianello-2025"
+    }
+  ],
+  "purchases": [
+    {
+      "id": "p-amazon",
+      "bookId": "verita-sepolte",
+      "name": "Amazon",
+      "type": "Scheda del libro",
+      "href": "https://www.amazon.it/Verit%C3%A0-sepolte-Erasmo-Stasolla/dp/B0F365GCXD"
+    },
+    {
+      "id": "p-giacovelli",
+      "bookId": "verita-sepolte",
+      "name": "Giacovelli Editore",
+      "type": "Acquisto diretto dall’editore",
+      "href": "https://www.giacovellieditore.com/product/verita-sepolte/"
+    },
+    {
+      "id": "p-ibs",
+      "bookId": "verita-sepolte",
+      "name": "IBS",
+      "type": "Libreria online",
+      "href": "https://www.ibs.it/verita-sepolte-libro-erasmo-stasolla/e/9791281763579"
+    },
+    {
+      "id": "p-feltrinelli",
+      "bookId": "verita-sepolte",
+      "name": "laFeltrinelli",
+      "type": "Libreria online",
+      "href": "https://www.lafeltrinelli.it/verita-sepolte-libro-erasmo-stasolla/e/9791281763579"
+    },
+    {
+      "id": "p-amazon-peppino",
+      "bookId": "peppino",
+      "name": "Amazon",
+      "type": "Scheda del libro",
+      "href": "https://www.amazon.it/dp/B0HJ8PW3Z1"
+    }
+  ],
+  "resources": [
+    {
+      "id": "r-scheda",
+      "group": "presentazioni",
+      "groupTitle": "Per le presentazioni.",
+      "title": "Scheda autore e romanzo",
+      "description": "Biografia breve, Verità sepolte e riferimenti editoriali.\nPDF · 2 pagine",
+      "href": "assets/scheda-autore-erasmo-stasolla.pdf",
+      "download": true
+    },
+    {
+      "id": "r-bio",
+      "group": "presentazioni",
+      "groupTitle": "Per le presentazioni.",
+      "title": "Biografia breve",
+      "description": "Testo per programmi, inviti e presentazioni.\nTXT · Testo modificabile",
+      "href": "assets/biografia-erasmo-stasolla.txt",
+      "download": true
+    },
+    {
+      "id": "r-cover",
+      "group": "immagini",
+      "groupTitle": "Il libro in immagine.",
+      "title": "Copertina di Verità sepolte",
+      "description": "Copertina dell’edizione Giacovelli.\nJPG · 640 × 896 px",
+      "href": "assets/verita-sepolte-cover.jpg",
+      "download": true
+    }
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "slug": "",
+      "title": "Home",
+      "seoTitle": "Romanzi, storia e memoria | Erasmo Stasolla",
+      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, i nuovi progetti narrativi, le presentazioni e la rassegna stampa.",
+      "inNav": false,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-hero",
+          "type": "hero",
+          "visible": true,
+          "data": {
+            "eyebrow": "Erasmo Stasolla · Scrittore",
+            "title": "Le storie\nche chiedono\n*di restare.*",
+            "copy": "I misteri d’Italia, le vite comuni, la memoria dei luoghi. Romanzi per interrogare il passato e ritrovarvi qualcosa di noi.",
+            "buttonLabel": "Esplora i romanzi",
+            "buttonHref": "romanzi/",
+            "linkLabel": "L’autore",
+            "linkHref": "autore/",
+            "barLeft": "STORIA, PERSONE, TERRITORI.",
+            "barRight": "SCOPRI LE OPERE ↓"
+          }
+        },
+        {
+          "id": "s-featured",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "verita-sepolte",
+            "eyebrow": "01 / Il primo romanzo"
+          }
+        },
+        {
+          "id": "s-feat-peppino",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "peppino",
+            "eyebrow": "04 / Ora in libreria"
+          }
+        },
+        {
+          "id": "s-press-home",
+          "type": "pressQuote",
+          "visible": true,
+          "data": {
+            "source": "ANSA",
+            "quote": "«Nei misteri d’Italia per capire il presente»",
+            "note": "Dall’approfondimento dedicato a Verità sepolte",
+            "linkLabel": "Tutti gli articoli",
+            "linkHref": "materiali/#rassegna"
+          }
+        },
+        {
+          "id": "s-upcoming",
+          "type": "bookList",
+          "visible": true,
+          "data": {
+            "eyebrow": "Le prossime storie",
+            "title": "Dentro nuovi romanzi.",
+            "linkLabel": "Tutte le opere",
+            "linkHref": "romanzi/",
+            "filter": "upcoming"
+          }
+        },
+        {
+          "id": "s-encounters",
+          "type": "encounters",
+          "visible": true,
+          "data": {
+            "eyebrow": "Oltre le pagine",
+            "title": "Le storie continuano\n*negli incontri.*",
+            "copy": "Le domande dei lettori, le letture ad alta voce, i luoghi che accolgono un libro. Le presentazioni sono una parte della sua storia.",
+            "buttonLabel": "Incontri e presentazioni",
+            "buttonHref": "incontri/",
+            "linkLabel": "Rassegna stampa",
+            "linkHref": "materiali/",
+            "eventId": "palagianello-2025"
+          }
+        }
+      ]
+    },
+    {
+      "id": "romanzi",
+      "slug": "romanzi",
+      "title": "Romanzi",
+      "seoTitle": "I romanzi | Erasmo Stasolla",
+      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte, Peppino e i progetti narrativi in preparazione.",
+      "inNav": true,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-r-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Le opere",
+            "title": "I romanzi.",
+            "subtitle": "Storie che attraversano il nostro Paese, le sue ombre e le vite di chi lo abita."
+          }
+        },
+        {
+          "id": "s-r-feat",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "verita-sepolte",
+            "eyebrow": "Disponibile · Giacovelli Editore",
+            "catalog": true
+          }
+        },
+        {
+          "id": "s-r-feat-peppino",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "peppino",
+            "eyebrow": "Disponibile · 2026",
+            "catalog": true
+          }
+        },
+        {
+          "id": "s-r-list",
+          "type": "bookList",
+          "visible": true,
+          "data": {
+            "eyebrow": "Il catalogo",
+            "title": "Gli altri romanzi.",
+            "filter": "published"
+          }
+        }
+      ]
+    },
+    {
+      "id": "autore",
+      "slug": "autore",
+      "title": "L’autore",
+      "seoTitle": "L’autore | Erasmo Stasolla",
+      "seoDescription": "La biografia letteraria di Erasmo Stasolla, autore di Verità sepolte: la storia italiana, la memoria e il legame con la Terra delle Gravine.",
+      "inNav": true,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-a-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "L’autore",
+            "title": "Erasmo Stasolla.",
+            "subtitle": "La passione per la storia. Il legame con i luoghi. L’attenzione alle persone."
+          }
+        },
+        {
+          "id": "s-a-bio",
+          "type": "bio",
+          "visible": true,
+          "data": {
+            "image": "assets/erasmo-stasolla-portrait.jpg",
+            "caption": "Ritratto dell’autore · Dal catalogo Giacovelli Editore",
+            "lead": "La memoria di un Paese passa anche dalle storie delle persone.",
+            "body": "Nato a Palagianello nel 1970, Erasmo Stasolla affianca alla sua esperienza nella Polizia Penitenziaria l’impegno nel volontariato e la passione per la scrittura. La storia italiana, la cronaca e la Terra delle Gravine sono fra le radici del suo lavoro narrativo.\n\nNel 2025 pubblica con Giacovelli Editore il suo primo romanzo, *Verità sepolte*, al quale ANSA dedica un approfondimento. Il libro unisce l’inchiesta di un giornalista alle domande che alcune pagine della storia repubblicana continuano a porre.",
+            "heading": "Scrivere per tenere aperte le domande.",
+            "body2": "Nei suoi progetti convivono la ricerca documentaria e l’invenzione, i misteri nazionali e le memorie familiari. La distinzione fra fatti e finzione accompagna il lavoro sulle storie ispirate a vicende reali.\n\nUna particolare attenzione va ai giovani lettori: raccontare il passato significa anche rendere comprensibili persone, luoghi ed eventi che non tutti conoscono. Il territorio entra nei romanzi attraverso la vita dei personaggi, i ricordi e le relazioni.",
+            "buttonLabel": "Esplora i romanzi",
+            "buttonHref": "romanzi/",
+            "linkLabel": "Scarica la biografia",
+            "linkHref": "assets/biografia-erasmo-stasolla.txt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "incontri",
+      "slug": "incontri",
+      "title": "Incontri",
+      "seoTitle": "Incontri e presentazioni | Erasmo Stasolla",
+      "seoDescription": "Appuntamenti e archivio delle presentazioni dei romanzi di Erasmo Stasolla. Verità sepolte al Castello Caracciolo di Palagianello.",
+      "inNav": true,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-i-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Incontri e presentazioni",
+            "title": "Un libro incontra\ni suoi lettori.",
+            "subtitle": "Gli appuntamenti, le letture e le conversazioni intorno ai romanzi."
+          }
+        },
+        {
+          "id": "s-i-events",
+          "type": "eventsList",
+          "visible": true,
+          "data": {
+            "upcomingTitle": "I prossimi incontri.",
+            "upcomingEmpty": "Nuove date da annunciare.",
+            "upcomingNote": "I prossimi appuntamenti saranno pubblicati qui con luogo, orario e informazioni per partecipare.",
+            "archiveEyebrow": "Le presentazioni passate",
+            "archiveTitle": "Tracce degli incontri."
+          }
+        },
+        {
+          "id": "s-i-press",
+          "type": "pressList",
+          "visible": true,
+          "data": {
+            "eyebrow": "Dalla stampa",
+            "title": "Articoli delle presentazioni.",
+            "topic": "presentazione"
+          }
+        },
+        {
+          "id": "s-i-gallery",
+          "type": "gallery",
+          "visible": true,
+          "data": {
+            "eyebrow": "Immagini",
+            "title": "Intorno agli incontri.",
+            "caption": "Ritratti, copertine e luoghi delle presentazioni.",
+            "layout": "film",
+            "items": [
+              {
+                "src": "assets/erasmo-stasolla-portrait.jpg",
+                "alt": "Erasmo Stasolla",
+                "caption": "L’autore"
+              },
+              {
+                "src": "assets/verita-sepolte-cover.jpg",
+                "alt": "Copertina di Verità sepolte",
+                "caption": "Verità sepolte"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "materiali",
+      "slug": "materiali",
+      "title": "Rassegna stampa",
+      "seoTitle": "Rassegna stampa e schede | Erasmo Stasolla",
+      "seoDescription": "Articoli sui romanzi e sulle presentazioni, schede da scaricare e copertine. La rassegna stampa di Erasmo Stasolla.",
+      "inNav": true,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-m-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Rassegna stampa e schede",
+            "title": "Articoli, schede,\ncopertine.",
+            "subtitle": "Gli articoli di giornale su ogni romanzo, le schede da scaricare per le presentazioni e le copertine da usare."
+          }
+        },
+        {
+          "id": "s-m-res",
+          "type": "resources",
+          "visible": true,
+          "data": {
+            "note": "I materiali identificano l’autore e l’opera. Copertina e fotografie mantengono i diritti dei rispettivi titolari."
+          }
+        },
+        {
+          "id": "s-m-press",
+          "type": "pressList",
+          "visible": true,
+          "data": {
+            "eyebrow": "Articoli e approfondimenti",
+            "title": "La rassegna, libro per libro.",
+            "groupByBook": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "acquista",
+      "slug": "acquista",
+      "title": "Acquista",
+      "seoTitle": "Dove acquistare i libri | Erasmo Stasolla",
+      "seoDescription": "Trova Verità sepolte su Amazon, sul sito Giacovelli Editore, IBS e laFeltrinelli. Collegamenti diretti alle schede del libro.",
+      "inNav": true,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-q-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Dove trovare i libri",
+            "title": "La prossima pagina\ncomincia qui.",
+            "subtitle": "I collegamenti alle librerie e agli editori delle opere pubblicate."
+          }
+        },
+        {
+          "id": "s-q-buy",
+          "type": "purchases",
+          "visible": true,
+          "data": {
+            "bookId": "verita-sepolte",
+            "note": "Prezzi, formati e disponibilità sono indicati nelle singole librerie. L’acquisto si conclude sul sito del venditore."
+          }
+        },
+        {
+          "id": "s-q-buy-peppino",
+          "type": "purchases",
+          "visible": true,
+          "data": {
+            "bookId": "peppino"
+          }
+        },
+        {
+          "id": "s-q-next",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Le prossime opere.",
+            "body": "I collegamenti per gli altri romanzi saranno aggiunti alla loro pubblicazione.",
+            "linkLabel": "Scopri i progetti in preparazione",
+            "linkHref": "romanzi/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "crediti",
+      "slug": "crediti",
+      "title": "Crediti",
+      "seoTitle": "Crediti e fonti | Erasmo Stasolla",
+      "seoDescription": "Le fonti delle immagini, dei materiali e delle notizie presenti nel sito di Erasmo Stasolla.",
+      "inNav": false,
+      "locked": true,
+      "sections": [
+        {
+          "id": "s-c-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Crediti",
+            "title": "Fonti e materiali.",
+            "subtitle": ""
+          }
+        },
+        {
+          "id": "s-c-1",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Copertina e ritratto",
+            "body": "La copertina di *Verità sepolte* e il ritratto di Erasmo Stasolla provengono dal catalogo ufficiale di Giacovelli Editore. Restano di pertinenza dei rispettivi titolari.",
+            "linkLabel": "Scheda del libro",
+            "linkHref": "https://www.giacovellieditore.com/product/verita-sepolte/",
+            "link2Label": "Pagina dell’autore",
+            "link2Href": "https://www.giacovellieditore.com/product-author/erasmo-stasolla/"
+          }
+        },
+        {
+          "id": "s-c-2",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Notizie e presentazioni",
+            "body": "Gli articoli della rassegna stampa sono consultabili sui siti delle rispettive testate. Il sito riporta brevi descrizioni e rimanda alle pubblicazioni originali di ANSA e ViviWebTv."
+          }
+        },
+        {
+          "id": "s-c-3",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Opere in preparazione",
+            "body": "Le descrizioni dei nuovi progetti presentano il percorso narrativo dell’autore. I titoli in preparazione non sono indicati come disponibili all’acquisto."
+          }
+        },
+        {
+          "id": "s-c-4",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Caratteri tipografici",
+            "body": "Libre Caslon Display, Libre Caslon Text e Inter, distribuiti con licenza SIL Open Font License."
+          }
+        }
+      ]
+    }
+  ]
+}

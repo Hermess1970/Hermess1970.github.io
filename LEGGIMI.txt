@@ -1,0 +1,39 @@
+SITO DI ERASMO STASOLLA
+Copia scaricabile del sito d’autore
+
+COME APRIRLO
+Estrai l’intero archivio ZIP in una cartella del computer.
+Apri il file index.html con il tuo browser.
+Lascia le cartelle e i file nella loro posizione: servono per le immagini, i caratteri e la navigazione.
+
+PANNELLO DI CONTROLLO
+Per aggiungere, modificare o eliminare sezioni, romanzi, incontri e testi:
+1. Fai doppio clic su «Avvia il pannello.command»
+   (oppure, nel Terminale, dalla cartella del sito: python3 server.py)
+2. Si apre il browser. Puoi accedere dalla home del sito (voce Accedi) oppure da http://127.0.0.1:8787/admin/
+3. Accedi con utente admin e password iniziale Stasolla2026
+4. Cambiala subito da Impostazioni
+5. Lascia aperta la finestra del Terminale mentre lavori
+6. Le modifiche si vedono sul sito all’indirizzo http://127.0.0.1:8787/
+
+Nel pannello trovi:
+- Pagine: ogni pagina è fatta di sezioni (aggiungi, sposta, nascondi, elimina)
+- Romanzi, Incontri, Rassegna stampa, Acquista, Materiali
+- Menu e file da caricare
+
+Serve Python 3, già presente su Mac. Il pannello funziona in locale sul computer.
+Per aggiornare il sito online, carica di nuovo tutta la cartella (compresi data/content.json e le nuove pagine).
+
+CONTENUTO
+Il pacchetto comprende tutte le pagine del sito, le immagini, i caratteri tipografici, i materiali scaricabili, il foglio di stile e il codice di navigazione.
+Il sito può essere consultato sul computer. I collegamenti ad Amazon, agli editori e agli articoli richiedono una connessione a Internet.
+
+AGGIORNAMENTI
+Le modifiche fatte dal pannello aggiornano il file data/content.json. Le modifiche alla copia scaricata non aggiornano automaticamente la versione online.
+Per trasferire il sito su uno spazio web, carica tutto il contenuto di questa cartella mantenendone la struttura. Per un dominio diverso, aggiorna i riferimenti canonici nelle pagine e i file sitemap.xml e robots.txt.
+
+Sito online: https://erasmo-stasolla.zifirricchio.chatgpt.site
+Copia del 9 settembre 2026.
+
+CREDITI
+Copertina e ritratto provengono dal catalogo Giacovelli Editore e mantengono i diritti dei rispettivi titolari. Le licenze dei caratteri sono nella cartella assets/font-licenses.
