@@ -18,6 +18,8 @@ from pathlib import Path
 from html import escape as h
 from urllib.parse import parse_qs, urlparse
 
+from render import PublicRenderer, inject_main
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 CONTENT_FILE = DATA / "content.json"
@@ -138,13 +140,17 @@ def seo_head(title: str, desc: str, url: str, image: str, kind: str = "website",
 
 def inject_seo(html: str, block: str, ld: str) -> str:
     html = re.sub(r"<title>.*?</title>", "", html, count=1, flags=re.I | re.S)
-    html = re.sub(r'<meta name="robots"[^>]*>', "", html, flags=re.I)
+    html = re.sub(r'<meta\s+name=["\']robots["\'][^>]*>', "", html, flags=re.I)
+    html = re.sub(r'<meta\s+name=["\']description["\'][^>]*>', "", html, flags=re.I)
     html = re.sub(r'<link rel="canonical"[^>]*>', "", html, flags=re.I)
     html = re.sub(r'<meta property="og:[^"]+"[^>]*>', "", html, flags=re.I)
     html = re.sub(r'<meta name="twitter:[^"]+"[^>]*>', "", html, flags=re.I)
     html = re.sub(r'<script type="application/ld\+json">.*?</script>', "", html, flags=re.I | re.S)
-    html = re.sub(r"(<head[^>]*>)", r"\1" + block + ld, html, count=1, flags=re.I)
-    return html
+    payload = block + ld
+    updated, n = re.subn(r'(<meta\s+name=["\']viewport["\'][^>]*>)', r"\1" + payload, html, count=1, flags=re.I)
+    if n:
+        return updated
+    return re.sub(r"(<head[^>]*>)", r"\1" + payload, html, count=1, flags=re.I)
 
 
 def write_robots_and_sitemap(content: dict) -> None:
@@ -208,7 +214,9 @@ def refresh_seo(content: dict) -> None:
         url = abs_url(content, slug + "/" if slug else "")
         image = image_abs(content, page.get("shareImage") or site.get("shareImage"))
         ld = f'<script type="application/ld+json">{json.dumps(website if not slug else person, ensure_ascii=False)}</script>'
-        html = inject_seo(path.read_text(encoding="utf-8"), seo_head(title, desc, url, image), ld)
+        renderer = PublicRenderer(content, "../" * depth_of(slug))
+        html = inject_main(path.read_text(encoding="utf-8"), renderer.render_page(page))
+        html = inject_seo(html, seo_head(title, desc, url, image), ld)
         path.write_text(html, encoding="utf-8")
     for book in content.get("books", []):
         slug = slugify(book.get("slug") or book.get("title") or "romanzo")
@@ -216,9 +224,11 @@ def refresh_seo(content: dict) -> None:
         if not path.exists():
             continue
         url = abs_url(content, f"romanzi/{slug}/")
+        renderer = PublicRenderer(content, "../" * depth_of(f"romanzi/{slug}"))
+        html = inject_main(path.read_text(encoding="utf-8"), renderer.render_book(book.get("id") or slug))
         if book.get("status") != "published":
             html = inject_seo(
-                path.read_text(encoding="utf-8"),
+                html,
                 seo_head("Erasmo Stasolla", default_desc, url, image_abs(content, site.get("shareImage")), "website", "noindex, nofollow"),
                 "",
             )
@@ -239,7 +249,7 @@ def refresh_seo(content: dict) -> None:
         if book.get("isbn"):
             book_ld["isbn"] = book["isbn"]
         ld = f'<script type="application/ld+json">{json.dumps(book_ld, ensure_ascii=False)}</script>'
-        html = inject_seo(path.read_text(encoding="utf-8"), seo_head(title, desc, url, image, "book"), ld)
+        html = inject_seo(html, seo_head(title, desc, url, image, "book"), ld)
         path.write_text(html, encoding="utf-8")
     write_robots_and_sitemap(content)
 
