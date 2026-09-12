@@ -245,7 +245,7 @@ const BOOK_FIELDS = [
   ["coverFocus", "Inquadratura della copertina", "select", IMAGE_FOCUS],
   ["coverFit", "Come entra nel riquadro", "select", IMAGE_FIT],
   ["coverNote", "Nota sotto la copertina"],
-  ["shareImage", "Immagine per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Metti la copertina a sinistra, titolo e «Erasmo Stasolla» a destra, su fondo scuro. Se è vuoto si usa l’immagine social del sito, non la copertina verticale."],
+  ["shareImage", "Immagine per i social", "image", null, "Opzionale. JPG o PNG, 1200 × 630 pixel, orizzontale. Se è vuoto, in condivisione si usa la copertina del romanzo."],
   ["slug", "Indirizzo (es. verita-sepolte)"],
   ["number", "Numero in elenco"],
   ["eyebrow", "Sopratitolo"],
@@ -1036,7 +1036,7 @@ function pageEditor(page, sectionId) {
             ${fieldHtml(["slug", "Indirizzo (vuoto = home)"], page)}
             ${fieldHtml(["seoTitle", "Titolo per Google e il browser"], page)}
             ${fieldHtml(["seoDescription", "Descrizione per Google e i social"], { seoDescription: page.seoDescription })}
-            ${fieldHtml(["shareImage", "Immagine per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Peso sotto 1,5 MB. Compare quando condividi il link su WhatsApp, Facebook e X. Non è la copertina del libro."], page)}
+            ${fieldHtml(["shareImage", "Immagine per i social", "image", null, "Opzionale. JPG o PNG, 1200 × 630 pixel, orizzontale. Se è vuoto, in condivisione si usa la foto in evidenza della pagina."], page)}
           </div>
         </form>
         ${sectionForm}
@@ -1388,7 +1388,7 @@ function siteSettings() {
       <p class="help">Incolla solo i collegamenti che usi. Quelli vuoti non si vedono. Facebook e WhatsApp sono già impostati. Il numero compare in basso e nel pulsante verde.</p>
       <h3 class="form-kicker">SEO e condivisione</h3>
       ${fieldHtml(["baseUrl", "Indirizzo pubblico del sito (https://…)"], s)}
-      ${fieldHtml(["shareImage", "Immagine predefinita per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Peso sotto 1,5 MB. Compare quando condividi un link su WhatsApp, Facebook e X. Ogni pagina o romanzo può averne una propria. Non usare una copertina verticale."], s)}
+      ${fieldHtml(["shareImage", "Immagine predefinita per i social", "image", null, "JPG o PNG, 1200 × 630 pixel, orizzontale. Si usa solo se la pagina o il romanzo non hanno una foto in evidenza."], s)}
       `}
       <h3 class="form-kicker">Colori e pulsanti</h3>
       ${colorField("colorInk", "Colore testo", s, "#141b21")}

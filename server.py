@@ -127,6 +127,48 @@ def image_abs(content: dict, path: str | None) -> str:
     return abs_url(content, str(chosen).lstrip("/"))
 
 
+def _book_cover(content: dict, book_id: str | None) -> str:
+    if not book_id:
+        return ""
+    for book in content.get("books") or []:
+        if book.get("id") == book_id and book.get("status") == "published":
+            return str(book.get("cover") or "")
+    return ""
+
+
+def page_featured_image(content: dict, page: dict) -> str:
+    """Prima foto in evidenza della pagina (hero, romanzo, bio, galleria)."""
+    site = content.get("site") or {}
+    for section in page.get("sections") or []:
+        if section.get("visible") is False:
+            continue
+        kind = section.get("type")
+        data = section.get("data") or {}
+        if kind == "hero":
+            return str(data.get("image") or site.get("portrait") or "")
+        if kind in {"bio", "imageText", "encounters", "heading", "text", "cta", "pressQuote"}:
+            if data.get("image"):
+                return str(data["image"])
+        if kind in {"featuredBook", "purchases"}:
+            cover = _book_cover(content, data.get("bookId"))
+            if cover:
+                return cover
+        if kind == "gallery":
+            for item in data.get("items") or []:
+                if item.get("src"):
+                    return str(item["src"])
+    return ""
+
+
+def social_image(content: dict, share: str | None, featured: str | None) -> tuple[str, bool]:
+    """Percorso social esplicito, altrimenti foto in evidenza, altrimenti immagine di sito."""
+    if share:
+        return image_abs(content, share), True
+    if featured:
+        return image_abs(content, featured), False
+    return image_abs(content, None), True
+
+
 def social_same_as(site: dict) -> list[str]:
     keys = ("facebook", "instagram", "youtube", "tiktok", "x", "threads", "linkedin")
     return [str(site[k]).strip() for k in keys if site.get(k)]
@@ -171,10 +213,11 @@ def book_json_ld(book: dict, url: str, cover_image: str, same: list[str]) -> dic
     return ld
 
 
-def seo_head(title: str, desc: str, url: str, image: str, kind: str = "website", robots: str | None = None) -> str:
+def seo_head(title: str, desc: str, url: str, image: str, kind: str = "website", robots: str | None = None, sized: bool = True) -> str:
     title, desc, url, image = h(title), h(desc), h(url), h(image)
     extra = f'<meta name="robots" content="{h(robots)}">' if robots else ""
-    return f"""<title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{url}">{extra}<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="{kind}"><meta property="og:locale" content="it_IT"><meta property="og:site_name" content="Erasmo Stasolla"><meta property="og:url" content="{url}"><meta property="og:image" content="{image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{title}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{image}">"""
+    dims = '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if sized else ""
+    return f"""<title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{url}">{extra}<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="{kind}"><meta property="og:locale" content="it_IT"><meta property="og:site_name" content="Erasmo Stasolla"><meta property="og:url" content="{url}"><meta property="og:image" content="{image}">{dims}<meta property="og:image:alt" content="{title}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{image}">"""
 
 
 def inject_seo(html: str, block: str, ld: str) -> str:
@@ -251,11 +294,11 @@ def refresh_seo(content: dict) -> None:
         title = page.get("seoTitle") or f"{page.get('title') or 'Pagina'} | Erasmo Stasolla"
         desc = page.get("seoDescription") or default_desc
         url = abs_url(content, slug + "/" if slug else "")
-        image = image_abs(content, page.get("shareImage") or site.get("shareImage"))
+        image, sized = social_image(content, page.get("shareImage"), page_featured_image(content, page))
         ld = f'<script type="application/ld+json">{json.dumps(website if not slug else person, ensure_ascii=False)}</script>'
         renderer = PublicRenderer(content, "../" * depth_of(slug))
         html = inject_main(path.read_text(encoding="utf-8"), renderer.render_page(page))
-        html = inject_seo(html, seo_head(title, desc, url, image), ld)
+        html = inject_seo(html, seo_head(title, desc, url, image, sized=sized), ld)
         path.write_text(html, encoding="utf-8")
     for book in content.get("books", []):
         slug = slugify(book.get("slug") or book.get("title") or "romanzo")
@@ -275,11 +318,11 @@ def refresh_seo(content: dict) -> None:
             continue
         title = f"{book.get('title') or 'Romanzo'} | Erasmo Stasolla"
         desc = book.get("summary") or book.get("intro") or default_desc
-        og_image = image_abs(content, book.get("shareImage") or site.get("shareImage"))
+        og_image, sized = social_image(content, book.get("shareImage"), book.get("cover"))
         cover_image = image_abs(content, book.get("cover") or site.get("shareImage"))
         book_ld = book_json_ld(book, url, cover_image, same)
         ld = f'<script type="application/ld+json">{json.dumps(book_ld, ensure_ascii=False)}</script>'
-        html = inject_seo(html, seo_head(title, desc, url, og_image, "book"), ld)
+        html = inject_seo(html, seo_head(title, desc, url, og_image, "book", sized=sized), ld)
         path.write_text(html, encoding="utf-8")
     write_robots_and_sitemap(content)
 
