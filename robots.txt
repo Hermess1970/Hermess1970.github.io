@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /data/
-Sitemap: https://erasmo-stasolla.zifirricchio.chatgpt.site/sitemap.xml
+Sitemap: https://erasmostasolla.it/sitemap.xml
