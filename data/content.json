@@ -350,8 +350,8 @@
       "id": "r-scheda",
       "group": "presentazioni",
       "groupTitle": "Per le presentazioni.",
-      "title": "Scheda autore e romanzo",
-      "description": "Biografia breve, Verità sepolte e riferimenti editoriali.\nPDF · 2 pagine",
+      "title": "Scheda autore e romanzi",
+      "description": "Biografia breve, i tre romanzi pubblicati e i riferimenti editoriali.\nPDF · 2 pagine",
       "href": "assets/scheda-autore-erasmo-stasolla.pdf",
       "download": true
     },
@@ -360,8 +360,8 @@
       "group": "presentazioni",
       "groupTitle": "Per le presentazioni.",
       "title": "Biografia breve",
-      "description": "Testo per programmi, inviti e presentazioni.\nTXT · Testo modificabile",
-      "href": "assets/biografia-erasmo-stasolla.txt",
+      "description": "Testo per programmi, inviti e presentazioni.\nPDF · 1 pagina",
+      "href": "assets/biografia-erasmo-stasolla.pdf",
       "download": true
     },
     {
@@ -582,7 +582,7 @@
             "buttonLabel": "Esplora i romanzi",
             "buttonHref": "romanzi/",
             "linkLabel": "Scarica la biografia",
-            "linkHref": "assets/biografia-erasmo-stasolla.txt",
+            "linkHref": "assets/biografia-erasmo-stasolla.pdf",
             "link2Label": "Scrivi su WhatsApp",
             "link2Href": "https://wa.me/393669240009?text=Buongiorno%2C%20le%20scrivo%20dal%20sito%20di%20Erasmo%20Stasolla."
           }
