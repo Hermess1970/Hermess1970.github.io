@@ -103,7 +103,8 @@
       "language": "Italiano",
       "amazon": "https://www.amazon.it/Verit%C3%A0-sepolte-Erasmo-Stasolla/dp/B0F365GCXD",
       "publisherUrl": "https://www.giacovellieditore.com/product/verita-sepolte/",
-      "featured": true
+      "featured": true,
+      "sheetPdf": "assets/scheda-verita-sepolte.pdf"
     },
     {
       "id": "cinquantacinque-giorni",
@@ -163,7 +164,8 @@
       "promoCaption": "Erasmo Stasolla con Cento nomi",
       "promoImageWidth": "1919",
       "promoImageHeight": "2400",
-      "promoImageOrient": "portrait"
+      "promoImageOrient": "portrait",
+      "sheetPdf": "assets/scheda-cento-nomi.pdf"
     },
     {
       "id": "peppino",
@@ -190,7 +192,8 @@
       "publisherUrl": "",
       "featured": true,
       "coverFocus": "center",
-      "shareImage": ""
+      "shareImage": "",
+      "sheetPdf": "assets/scheda-peppino.pdf"
     },
     {
       "id": "sogni-oltre-il-velo",
@@ -362,6 +365,33 @@
       "title": "Biografia breve",
       "description": "Testo per programmi, inviti e presentazioni.\nPDF · 1 pagina",
       "href": "assets/biografia-erasmo-stasolla.pdf",
+      "download": true
+    },
+    {
+      "id": "r-scheda-cento-nomi",
+      "group": "romanzi",
+      "groupTitle": "Schede dei romanzi.",
+      "title": "Scheda di Cento nomi",
+      "description": "Sintesi, dati editoriali e dove trovarlo.\nPDF · 1 pagina",
+      "href": "assets/scheda-cento-nomi.pdf",
+      "download": true
+    },
+    {
+      "id": "r-scheda-peppino",
+      "group": "romanzi",
+      "groupTitle": "Schede dei romanzi.",
+      "title": "Scheda di Peppino",
+      "description": "Sintesi, dati editoriali e dove trovarlo.\nPDF · 1 pagina",
+      "href": "assets/scheda-peppino.pdf",
+      "download": true
+    },
+    {
+      "id": "r-scheda-verita-sepolte",
+      "group": "romanzi",
+      "groupTitle": "Schede dei romanzi.",
+      "title": "Scheda di Verità sepolte",
+      "description": "Sintesi, dati editoriali e dove trovarlo.\nPDF · 1 pagina",
+      "href": "assets/scheda-verita-sepolte.pdf",
       "download": true
     },
     {

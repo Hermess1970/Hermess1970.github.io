@@ -711,6 +711,7 @@
           </dl>
           <div class="actions">
             ${book.amazon ? `<a class="button" href="${esc(book.amazon)}" target="_blank" rel="noopener noreferrer">Acquista su Amazon<span class="arrow" aria-hidden="true">↗</span></a>` : ""}
+            ${book.sheetPdf ? `<a class="text-link" href="${asset(book.sheetPdf)}" download>Scarica la scheda<span class="arrow" aria-hidden="true">↓</span></a>` : ""}
             ${book.publisherUrl ? `<a class="text-link" href="${esc(book.publisherUrl)}" target="_blank" rel="noopener noreferrer">Dal sito dell’editore<span class="arrow" aria-hidden="true">↗</span></a>` : ""}
           </div>
         </div></div>

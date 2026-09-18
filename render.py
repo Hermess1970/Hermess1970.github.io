@@ -777,6 +777,11 @@ class PublicRenderer:
                 f'Acquista su Amazon<span class="arrow" aria-hidden="true">↗</span></a>'
                 if book.get("amazon") else ""
             )
+            sheet = (
+                f'<a class="text-link" href="{self.asset(book.get("sheetPdf"))}" download>'
+                f'Scarica la scheda<span class="arrow" aria-hidden="true">↓</span></a>'
+                if book.get("sheetPdf") else ""
+            )
             pub = (
                 f'<a class="text-link" href="{esc(book.get("publisherUrl"))}" target="_blank" rel="noopener noreferrer">'
                 f'Dal sito dell’editore<span class="arrow" aria-hidden="true">↗</span></a>'
@@ -787,7 +792,7 @@ class PublicRenderer:
                 f'{heading}<div class="container"><div class="detail-grid">'
                 f'{self.cover_stage(book)}<div class="detail-copy">{h2}{paras(book.get("body") or "")}'
                 f'<dl class="book-data">{"".join(rows)}</dl>'
-                f'<div class="actions">{amazon}{pub}</div></div></div>'
+                f'<div class="actions">{amazon}{sheet}{pub}</div></div></div>'
                 f'{self.book_promo(book)}'
                 f'<section class="subsection" style="padding-bottom:36px"><h2>Intorno al libro.</h2>'
                 f'<div class="actions">'

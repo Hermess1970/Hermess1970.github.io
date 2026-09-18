@@ -247,6 +247,7 @@ const BOOK_FIELDS = [
   ["coverNote", "Nota sotto la copertina"],
   ["promoImage", "Fotografia promozionale", "image", null, "Opzionale. Compare nella scheda del romanzo, sotto la copertina."],
   ["promoCaption", "Didascalia della foto promozionale"],
+  ["sheetPdf", "Scheda PDF da scaricare", null, null, "Opzionale. Compare nella pagina del romanzo e in Rassegna stampa."],
   ["shareImage", "Immagine per i social", "image", null, "Opzionale. JPG o PNG, 1200 × 630 pixel, orizzontale. Se è vuoto, in condivisione si usa la copertina del romanzo."],
   ["slug", "Indirizzo (es. verita-sepolte)"],
   ["number", "Numero in elenco"],
