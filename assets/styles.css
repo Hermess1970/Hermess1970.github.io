@@ -291,6 +291,10 @@ body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .menu-button{border-r
 .book-press .press-item{border-top:1px solid var(--line)}
 .book-press h2{margin-bottom:8px}
 
+.book-promo{margin:48px 0 12px;max-width:820px}
+.book-promo img{width:100%;height:auto;display:block}
+.book-promo figcaption{margin-top:12px;font-size:.8rem;color:var(--muted)}
+@media print{.book-promo{break-inside:avoid}}
 .footer-wa{font-size:.875rem;color:var(--muted);margin-top:12px;max-width:320px;line-height:1.5}
 .footer-wa a{color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px}
 .footer-share{margin-top:28px}

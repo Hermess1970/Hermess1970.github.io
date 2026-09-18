@@ -236,6 +236,19 @@ class PublicRenderer:
         note = f'<span class="stage-note">{esc(book.get("coverNote"))}</span>' if book.get("coverNote") else ""
         return f'<div class="{cls}">{img}{note}</div>'
 
+    def book_promo(self, book: dict | None) -> str:
+        if not book or not book.get("promoImage"):
+            return ""
+        meta = self.img_meta(book, "promoImage")
+        cap = book.get("promoCaption") or ("Erasmo Stasolla con " + (book.get("title") or "il romanzo"))
+        orient_attr = f' data-orient="{esc(meta["orient"])}"' if meta.get("orient") else ""
+        return (
+            f'<figure class="book-promo fade-in">'
+            f'<img class="smart-img" src="{self.asset(book.get("promoImage"))}" alt="{esc(cap)}" '
+            f'loading="lazy" decoding="async"{meta["dim"]}{orient_attr}>'
+            f'<figcaption>{esc(cap)}</figcaption></figure>'
+        )
+
     def actions(self, d: dict) -> str:
         parts = []
         if d.get("buttonLabel"):
@@ -775,6 +788,7 @@ class PublicRenderer:
                 f'{self.cover_stage(book)}<div class="detail-copy">{h2}{paras(book.get("body") or "")}'
                 f'<dl class="book-data">{"".join(rows)}</dl>'
                 f'<div class="actions">{amazon}{pub}</div></div></div>'
+                f'{self.book_promo(book)}'
                 f'<section class="subsection" style="padding-bottom:36px"><h2>Intorno al libro.</h2>'
                 f'<div class="actions">'
                 f'<a class="text-link" href="{self.href("incontri/")}#archivio">Le presentazioni'

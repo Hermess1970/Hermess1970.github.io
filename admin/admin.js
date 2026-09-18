@@ -245,6 +245,8 @@ const BOOK_FIELDS = [
   ["coverFocus", "Inquadratura della copertina", "select", IMAGE_FOCUS],
   ["coverFit", "Come entra nel riquadro", "select", IMAGE_FIT],
   ["coverNote", "Nota sotto la copertina"],
+  ["promoImage", "Fotografia promozionale", "image", null, "Opzionale. Compare nella scheda del romanzo, sotto la copertina."],
+  ["promoCaption", "Didascalia della foto promozionale"],
   ["shareImage", "Immagine per i social", "image", null, "Opzionale. JPG o PNG, 1200 × 630 pixel, orizzontale. Se è vuoto, in condivisione si usa la copertina del romanzo."],
   ["slug", "Indirizzo (es. verita-sepolte)"],
   ["number", "Numero in elenco"],
@@ -598,8 +600,8 @@ function ensureBookShowcase(page, book, prefix, data) {
   const show = !!(book.featured && book.status === "published");
   if (show && !existing) {
     const section = { id: prefix + book.id, type: "featuredBook", visible: true, data: { bookId: book.id, ...data } };
-    const last = [...page.sections].map((s, i) => ({ s, i })).reverse().find((x) => x.s.type === "featuredBook");
-    page.sections.splice(last ? last.i + 1 : 1, 0, section);
+    const first = page.sections.findIndex((s) => s.type === "featuredBook");
+    page.sections.splice(first >= 0 ? first : 1, 0, section);
   }
   if (!show && existing && existing.id === prefix + book.id) removeId(page.sections, existing.id);
 }
@@ -613,8 +615,9 @@ function ensureBookPurchase(book) {
   const page = byId(content.pages, "acquista");
   if (!page || page.sections.some((s) => s.type === "purchases" && s.data?.bookId === book.id)) return;
   const section = { id: "s-q-buy-" + book.id, type: "purchases", visible: true, data: { bookId: book.id } };
+  const firstBuy = page.sections.findIndex((s) => s.type === "purchases");
   const next = page.sections.findIndex((s) => s.id === "s-q-next");
-  page.sections.splice(next >= 0 ? next : page.sections.length, 0, section);
+  page.sections.splice(firstBuy >= 0 ? firstBuy : (next >= 0 ? next : page.sections.length), 0, section);
 }
 
 function syncBookOnSite(book) {

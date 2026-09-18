@@ -158,7 +158,12 @@
       "shareImage": "",
       "coverWidth": "1000",
       "coverHeight": "1419",
-      "coverOrient": "portrait"
+      "coverOrient": "portrait",
+      "promoImage": "assets/uploads/cento-nomi-promo.jpg",
+      "promoCaption": "Erasmo Stasolla con Cento nomi",
+      "promoImageWidth": "1919",
+      "promoImageHeight": "2400",
+      "promoImageOrient": "portrait"
     },
     {
       "id": "peppino",
@@ -367,6 +372,24 @@
       "description": "Copertina dell’edizione Giacovelli.\nJPG · 640 × 896 px",
       "href": "assets/verita-sepolte-cover.jpg",
       "download": true
+    },
+    {
+      "id": "r-cover-cento-nomi",
+      "group": "immagini",
+      "groupTitle": "Il libro in immagine.",
+      "title": "Copertina di Cento nomi",
+      "description": "Copertina dell’edizione 2026.\nJPG · 1000 × 1419 px",
+      "href": "assets/uploads/CENTO-NOMI.jpg",
+      "download": true
+    },
+    {
+      "id": "r-promo-cento-nomi",
+      "group": "immagini",
+      "groupTitle": "Il libro in immagine.",
+      "title": "Foto promozionale di Cento nomi",
+      "description": "Erasmo Stasolla con il romanzo.\nJPG · 1919 × 2400 px",
+      "href": "assets/uploads/cento-nomi-promo.jpg",
+      "download": true
     }
   ],
   "pages": [
@@ -375,7 +398,7 @@
       "slug": "",
       "title": "Home",
       "seoTitle": "Romanzi, storia e memoria | Erasmo Stasolla",
-      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, Cento nomi, le presentazioni e la rassegna stampa.",
+      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Cento nomi, Peppino, Verità sepolte, le presentazioni e la rassegna stampa.",
       "inNav": false,
       "locked": true,
       "sections": [
@@ -396,12 +419,12 @@
           }
         },
         {
-          "id": "s-featured",
+          "id": "s-feat-cento-nomi",
           "type": "featuredBook",
           "visible": true,
           "data": {
-            "bookId": "verita-sepolte",
-            "eyebrow": "01 / Il primo romanzo"
+            "bookId": "cento-nomi",
+            "eyebrow": "03 / Ora in libreria"
           }
         },
         {
@@ -410,16 +433,16 @@
           "visible": true,
           "data": {
             "bookId": "peppino",
-            "eyebrow": "04 / Ora in libreria"
+            "eyebrow": "04 / Disponibile"
           }
         },
         {
-          "id": "s-feat-cento-nomi",
+          "id": "s-featured",
           "type": "featuredBook",
           "visible": true,
           "data": {
-            "bookId": "cento-nomi",
-            "eyebrow": "03 / Ora in libreria"
+            "bookId": "verita-sepolte",
+            "eyebrow": "01 / Il primo romanzo"
           }
         },
         {
@@ -470,7 +493,7 @@
       "slug": "romanzi",
       "title": "Romanzi",
       "seoTitle": "I romanzi | Erasmo Stasolla",
-      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte, Peppino e Cento nomi.",
+      "seoDescription": "I libri di Erasmo Stasolla: Cento nomi, Peppino e Verità sepolte.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -485,12 +508,12 @@
           }
         },
         {
-          "id": "s-r-feat",
+          "id": "s-r-feat-cento-nomi",
           "type": "featuredBook",
           "visible": true,
           "data": {
-            "bookId": "verita-sepolte",
-            "eyebrow": "Disponibile · Giacovelli Editore",
+            "bookId": "cento-nomi",
+            "eyebrow": "Disponibile · 2026",
             "catalog": true
           }
         },
@@ -505,12 +528,12 @@
           }
         },
         {
-          "id": "s-r-feat-cento-nomi",
+          "id": "s-r-feat",
           "type": "featuredBook",
           "visible": true,
           "data": {
-            "bookId": "cento-nomi",
-            "eyebrow": "Disponibile · 2026",
+            "bookId": "verita-sepolte",
+            "eyebrow": "Disponibile · Giacovelli Editore",
             "catalog": true
           }
         },
@@ -618,6 +641,11 @@
             "layout": "film",
             "items": [
               {
+                "src": "assets/uploads/cento-nomi-promo.jpg",
+                "alt": "Erasmo Stasolla con Cento nomi",
+                "caption": "Cento nomi"
+              },
+              {
                 "src": "assets/erasmo-stasolla-portrait.jpg",
                 "alt": "Erasmo Stasolla",
                 "caption": "L’autore"
@@ -681,7 +709,7 @@
       "slug": "acquista",
       "title": "Acquista",
       "seoTitle": "Dove acquistare i libri | Erasmo Stasolla",
-      "seoDescription": "Trova Verità sepolte, Peppino e Cento nomi su Amazon. Collegamenti diretti alle schede dei libri.",
+      "seoDescription": "Trova Cento nomi, Peppino e Verità sepolte su Amazon. Collegamenti diretti alle schede dei libri.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -696,11 +724,11 @@
           }
         },
         {
-          "id": "s-q-buy",
+          "id": "s-q-buy-cento-nomi",
           "type": "purchases",
           "visible": true,
           "data": {
-            "bookId": "verita-sepolte",
+            "bookId": "cento-nomi",
             "note": "Prezzi, formati e disponibilità sono indicati nelle singole librerie. L’acquisto si conclude sul sito del venditore."
           }
         },
@@ -713,11 +741,11 @@
           }
         },
         {
-          "id": "s-q-buy-cento-nomi",
+          "id": "s-q-buy",
           "type": "purchases",
           "visible": true,
           "data": {
-            "bookId": "cento-nomi"
+            "bookId": "verita-sepolte"
           }
         },
         {
@@ -758,7 +786,7 @@
           "visible": true,
           "data": {
             "title": "Copertina e ritratto",
-            "body": "La copertina di *Verità sepolte* e il ritratto di Erasmo Stasolla provengono dal catalogo ufficiale di Giacovelli Editore. Restano di pertinenza dei rispettivi titolari.",
+            "body": "La copertina di *Verità sepolte* e il ritratto di Erasmo Stasolla provengono dal catalogo ufficiale di Giacovelli Editore. La fotografia promozionale di *Cento nomi* è dell’autore. Restano di pertinenza dei rispettivi titolari.",
             "linkLabel": "Scheda del libro",
             "linkHref": "https://www.giacovellieditore.com/product/verita-sepolte/",
             "link2Label": "Pagina dell’autore",

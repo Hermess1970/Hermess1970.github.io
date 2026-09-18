@@ -307,6 +307,15 @@
     return `<div class="${cls}">${book.cover ? `<img class="smart-img" src="${asset(book.cover)}" alt="Copertina di ${esc(book.title)}" loading="lazy" decoding="async"${meta.dim}${pos}${meta.orient ? ` data-orient="${esc(meta.orient)}"` : ""}>` : ""}
         ${book.coverNote ? `<span class="stage-note">${esc(book.coverNote)}</span>` : ""}</div>`;
   }
+  function bookPromo(book) {
+    if (!book || !book.promoImage) return "";
+    const meta = imgMeta(book, "promoImage");
+    const cap = book.promoCaption || ("Erasmo Stasolla con " + (book.title || "il romanzo"));
+    return `<figure class="book-promo fade-in">
+      <img class="smart-img" src="${asset(book.promoImage)}" alt="${esc(cap)}" loading="lazy" decoding="async"${meta.dim}${meta.orient ? ` data-orient="${esc(meta.orient)}"` : ""}>
+      <figcaption>${esc(cap)}</figcaption>
+    </figure>`;
+  }
   function vbItem(kind, id, label, html) {
     if (!builderMode) return html;
     return `<div class="vb-item" data-vb-kind="${esc(kind)}" data-vb-id="${esc(id)}">
@@ -705,6 +714,7 @@
             ${book.publisherUrl ? `<a class="text-link" href="${esc(book.publisherUrl)}" target="_blank" rel="noopener noreferrer">Dal sito dell’editore<span class="arrow" aria-hidden="true">↗</span></a>` : ""}
           </div>
         </div></div>
+        ${bookPromo(book)}
         <section class="subsection" style="padding-bottom:36px"><h2>Intorno al libro.</h2>
           <div class="actions">
             <a class="text-link" href="${href("incontri/")}#archivio">Le presentazioni<span class="arrow" aria-hidden="true">→</span></a>
