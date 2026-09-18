@@ -135,25 +135,30 @@
       "slug": "cento-nomi",
       "number": "03",
       "title": "Cento nomi",
-      "eyebrow": "Romanzo di spionaggio · In preparazione",
-      "status": "upcoming",
-      "statusLabel": "In preparazione",
-      "genre": "Romanzo di spionaggio",
+      "eyebrow": "Romanzo storico e d’indagine · 2026",
+      "status": "published",
+      "statusLabel": "Disponibile",
+      "genre": "Romanzo storico e d’indagine",
       "summary": "Il carcere di Trani, gli anni di piombo e un uomo dalle identità sfuggenti.",
-      "intro": "Il carcere di Trani, gli anni di piombo e un uomo dalle identità sfuggenti.",
-      "cover": "",
-      "coverNote": "",
-      "heading": "Ogni nome nasconde una storia.",
-      "body": "Negli anni di piombo, il carcere di Trani diventa il punto d’incontro di destini che oltrepassano le sue mura. Eupremio Palmieri, giovane agente di custodia, osserva Richard Varelton, un detenuto capace di cambiare volto e identità.\n\nRealtà documentata e finzione si intrecciano in una storia di silenzi, rivolte e rapporti di potere. A tenere insieme il racconto è la memoria di un uomo e ciò che, dopo molti anni, può ancora essere affidato a un figlio.",
+      "intro": "Nel 1975 Richard Varelton entra nel carcere di Trani con tre passaporti, una storia impossibile da verificare e troppi uomini interessati a sapere chi sia davvero.\n\nEupremio Palmieri è un giovane agente del Corpo degli agenti di custodia. Ha appena iniziato a conoscere il mestiere quando qualcuno gli chiede, senza ordini scritti e senza spiegazioni, di osservare quel detenuto e ricordare tutto ciò che vede.",
+      "cover": "assets/uploads/CENTO-NOMI.jpg",
+      "coverNote": "L’uomo dai molti nomi negli anni di piombo",
+      "heading": "Su quella lista\nci sono cento nomi.",
+      "body": "Da quel momento la sua vita si intreccia con gli anni più oscuri della storia italiana: terrorismo, servizi segreti, carceri speciali, il sequestro Moro, il caso D’Urso e la rivolta nel carcere di Trani del dicembre 1980.\n\nMa Varelton non è soltanto un detenuto. Ha attraversato Paesi, identità e ambienti diversi. Cinquant’anni dopo, Eupremio riceve una fotografia, una lettera e una lista. Su quella lista ci sono cento nomi. L’ultimo è il suo.\n\nRealtà documentata e finzione narrativa si intrecciano in un romanzo storico e d’indagine che racconta il carcere da una prospettiva insolita: quella degli uomini che ne custodivano le porte.",
       "themes": "Anni di piombo · Carcere di Trani · Identità e memoria",
-      "publisher": "",
-      "year": "",
-      "pages": "",
-      "isbn": "",
+      "publisher": "Independently published",
+      "year": "2026",
+      "pages": "222",
+      "isbn": "9798170361991",
       "language": "Italiano",
-      "amazon": "",
+      "amazon": "https://www.amazon.it/dp/B0HK4QPKSC",
       "publisherUrl": "",
-      "featured": false
+      "featured": true,
+      "coverFocus": "center",
+      "shareImage": "",
+      "coverWidth": "1000",
+      "coverHeight": "1419",
+      "coverOrient": "portrait"
     },
     {
       "id": "peppino",
@@ -326,6 +331,13 @@
       "name": "Amazon",
       "type": "Scheda del libro",
       "href": "https://www.amazon.it/dp/B0HJ8PW3Z1"
+    },
+    {
+      "id": "p-amazon-cento-nomi",
+      "bookId": "cento-nomi",
+      "name": "Amazon",
+      "type": "Scheda del libro",
+      "href": "https://www.amazon.it/dp/B0HK4QPKSC"
     }
   ],
   "resources": [
@@ -363,7 +375,7 @@
       "slug": "",
       "title": "Home",
       "seoTitle": "Romanzi, storia e memoria | Erasmo Stasolla",
-      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, le presentazioni e la rassegna stampa.",
+      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Verità sepolte, Peppino, Cento nomi, le presentazioni e la rassegna stampa.",
       "inNav": false,
       "locked": true,
       "sections": [
@@ -399,6 +411,15 @@
           "data": {
             "bookId": "peppino",
             "eyebrow": "04 / Ora in libreria"
+          }
+        },
+        {
+          "id": "s-feat-cento-nomi",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "cento-nomi",
+            "eyebrow": "03 / Ora in libreria"
           }
         },
         {
@@ -449,7 +470,7 @@
       "slug": "romanzi",
       "title": "Romanzi",
       "seoTitle": "I romanzi | Erasmo Stasolla",
-      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte e Peppino.",
+      "seoDescription": "I libri di Erasmo Stasolla: Verità sepolte, Peppino e Cento nomi.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -479,6 +500,16 @@
           "visible": true,
           "data": {
             "bookId": "peppino",
+            "eyebrow": "Disponibile · 2026",
+            "catalog": true
+          }
+        },
+        {
+          "id": "s-r-feat-cento-nomi",
+          "type": "featuredBook",
+          "visible": true,
+          "data": {
+            "bookId": "cento-nomi",
             "eyebrow": "Disponibile · 2026",
             "catalog": true
           }
@@ -522,7 +553,7 @@
             "image": "assets/erasmo-stasolla-portrait.jpg",
             "caption": "Ritratto dell’autore · Dal catalogo Giacovelli Editore",
             "lead": "La memoria di un Paese passa anche dalle storie delle persone.",
-            "body": "Nato a Palagianello nel 1970, Erasmo Stasolla affianca alla sua esperienza nella Polizia Penitenziaria l’impegno nel volontariato e la passione per la scrittura. La storia italiana, la cronaca e la Terra delle Gravine sono fra le radici del suo lavoro narrativo.\n\nNel 2025 pubblica con Giacovelli Editore il suo primo romanzo, *Verità sepolte*, al quale ANSA dedica un approfondimento. Il libro unisce l’inchiesta di un giornalista alle domande che alcune pagine della storia repubblicana continuano a porre.",
+            "body": "Nato a Palagianello nel 1970, Erasmo Stasolla affianca alla sua esperienza nella Polizia Penitenziaria l’impegno nel volontariato e la passione per la scrittura. La storia italiana, la cronaca e la Terra delle Gravine sono fra le radici del suo lavoro narrativo.\n\nNel 2025 pubblica con Giacovelli Editore il suo primo romanzo, *Verità sepolte*, al quale ANSA dedica un approfondimento. Nel 2026 escono *Peppino* e *Cento nomi*: memorie familiari e anni di piombo, sempre tra fatti documentati e invenzione narrativa.",
             "heading": "Scrivere per tenere aperte le domande.",
             "body2": "Nei suoi progetti convivono la ricerca documentaria e l’invenzione, i misteri nazionali e le memorie familiari. La distinzione fra fatti e finzione accompagna il lavoro sulle storie ispirate a vicende reali.\n\nUna particolare attenzione va ai giovani lettori: raccontare il passato significa anche rendere comprensibili persone, luoghi ed eventi che non tutti conoscono. Il territorio entra nei romanzi attraverso la vita dei personaggi, i ricordi e le relazioni.",
             "buttonLabel": "Esplora i romanzi",
@@ -595,6 +626,11 @@
                 "src": "assets/verita-sepolte-cover.jpg",
                 "alt": "Copertina di Verità sepolte",
                 "caption": "Verità sepolte"
+              },
+              {
+                "src": "assets/uploads/CENTO-NOMI.jpg",
+                "alt": "Copertina di Cento nomi",
+                "caption": "Cento nomi"
               }
             ]
           }
@@ -645,7 +681,7 @@
       "slug": "acquista",
       "title": "Acquista",
       "seoTitle": "Dove acquistare i libri | Erasmo Stasolla",
-      "seoDescription": "Trova Verità sepolte su Amazon, sul sito Giacovelli Editore, IBS e laFeltrinelli. Collegamenti diretti alle schede del libro.",
+      "seoDescription": "Trova Verità sepolte, Peppino e Cento nomi su Amazon. Collegamenti diretti alle schede dei libri.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -674,6 +710,14 @@
           "visible": true,
           "data": {
             "bookId": "peppino"
+          }
+        },
+        {
+          "id": "s-q-buy-cento-nomi",
+          "type": "purchases",
+          "visible": true,
+          "data": {
+            "bookId": "cento-nomi"
           }
         },
         {
