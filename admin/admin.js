@@ -10,6 +10,7 @@ const TYPES = {
   featuredBook: { label: "Romanzo in evidenza", hint: "Copertina e scheda di un libro" },
   bookList: { label: "Elenco romanzi", hint: "Lista dei titoli" },
   pressQuote: { label: "Citazione stampa", hint: "Frase in evidenza da un articolo" },
+  pressHighlight: { label: "Articolo in evidenza", hint: "Grande sezione per una notizia di stampa" },
   encounters: { label: "Blocco incontri", hint: "Sezione scura con un appuntamento" },
   bio: { label: "Biografia", hint: "Ritratto e testo sull’autore" },
   eventsList: { label: "Elenco incontri", hint: "Prossime date e archivio" },
@@ -22,9 +23,9 @@ const TYPES = {
 const TYPE_GROUPS = [
   ["Racconto", ["heading", "text", "hero", "quote", "columns", "cta"]],
   ["Immagini e media", ["gallery", "imageText", "video", "divider"]],
-  ["Libri e incontri", ["featuredBook", "bookList", "bio", "encounters", "eventsList", "pressQuote", "pressList", "purchases", "resources"]],
+  ["Libri e incontri", ["featuredBook", "bookList", "bio", "encounters", "eventsList", "pressHighlight", "pressQuote", "pressList", "purchases", "resources"]],
 ];
-const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider"]);
+const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight"]);
 
 const IMAGE_POS = [
   ["right", "A destra del testo"],
@@ -147,6 +148,11 @@ const FIELDS = {
     ["note", "Nota"],
     ["linkLabel", "Collegamento"],
     ["linkHref", "Indirizzo"],
+  ],
+  pressHighlight: [
+    ["pressId", "Articolo da mettere in evidenza", "press"],
+    ["eyebrow", "Sopratitolo"],
+    ["title", "Titolo della sezione (*corsivo*)", "textarea"],
   ],
   encounters: [
     ["eyebrow", "Sopratitolo"],
@@ -296,6 +302,7 @@ const PRESS_FIELDS = [
   ["dateLabel", "Data"],
   ["title", "Titolo"],
   ["summary", "Sommario", "textarea"],
+  ["quote", "Citazione in evidenza", "textarea"],
   ["href", "Indirizzo articolo"],
   ["bookId", "Romanzo di riferimento", "book"],
   ["topic", "Tipo", "select", [
@@ -303,6 +310,7 @@ const PRESS_FIELDS = [
     ["presentazione", "Sulla presentazione"],
   ]],
   ["eventId", "Incontro (se è sulla presentazione)", "event"],
+  ["featured", "Metti in evidenza (home, rassegna e pagina del libro)", "check"],
 ];
 
 const BUY_FIELDS = [
@@ -744,6 +752,12 @@ function fieldHtml(spec, data) {
     ).join("");
     return `<label class="f"><span>${esc(label)}</span><select name="${name}">${opts}</select></label>`;
   }
+  if (kind === "press") {
+    const opts = [`<option value="">— scegli —</option>`].concat(
+      (content.press || []).map((b) => `<option value="${esc(b.id)}" ${val === b.id ? "selected" : ""}>${esc(b.source || "")} — ${esc(b.title)}</option>`)
+    ).join("");
+    return `<label class="f"><span>${esc(label)}</span><select name="${name}">${opts}</select></label>`;
+  }
   if (kind === "gallery") {
     const items = Array.isArray(data?.items) ? data.items : [];
     return `<div class="f gallery-editor" data-gallery>
@@ -1009,7 +1023,7 @@ function nestedEntriesHtml(page, section) {
       + `<a href="#/costruttore/${esc(page.id)}/romanzo/nuovo">+ Nuovo romanzo</a>`;
   } else if (section.type === "eventsList" || section.type === "encounters") {
     rows = (content.events || []).map((e) => `<a href="#/costruttore/${esc(page.id)}/incontro/${esc(e.id)}">${esc(e.title)}</a>`).join("");
-  } else if (section.type === "pressList" || section.type === "pressQuote") {
+  } else if (section.type === "pressList" || section.type === "pressQuote" || section.type === "pressHighlight") {
     rows = (content.press || []).map((e) => `<a href="#/costruttore/${esc(page.id)}/stampa/${esc(e.id)}">${esc(e.title)}</a>`).join("");
   } else if (section.type === "resources") {
     rows = (content.resources || []).map((e) => `<a href="#/costruttore/${esc(page.id)}/materiale/${esc(e.id)}">${esc(e.title)}</a>`).join("");

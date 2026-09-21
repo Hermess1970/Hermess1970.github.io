@@ -9,7 +9,7 @@
     heading: "Intestazione", text: "Testo", hero: "Hero", gallery: "Galleria", video: "Video",
     columns: "Colonne", quote: "Citazione", divider: "Separatore", featuredBook: "Romanzo",
     bookList: "Romanzi", pressQuote: "Stampa", encounters: "Incontri", bio: "Biografia",
-    eventsList: "Agenda", pressList: "Rassegna", resources: "Schede", purchases: "Acquista",
+    eventsList: "Agenda", pressList: "Rassegna", pressHighlight: "Articolo in evidenza", resources: "Schede", purchases: "Acquista",
     cta: "Pulsanti", imageText: "Immagine e testo",
   };
 
@@ -86,6 +86,38 @@
       <div><h3>${esc(p.title)}</h3>${p.summary ? `<p>${esc(p.summary)}</p>` : ""}</div>
       <a class="text-link" href="${href(p.href)}"${ext(p.href || "")} aria-label="${esc(p.title)}"><span class="arrow" aria-hidden="true">↗</span></a>
     </article>`);
+  }
+  function pressFeatureCard(p, content, opts = {}) {
+    if (!p) return "";
+    const book = find(content.books, p.bookId);
+    const cover = book && book.cover ? `<div class="press-feature-cover">${coverStage(book)}</div>` : "";
+    const quote = p.quote ? `<p class="press-feature-quote">${rich(p.quote)}</p>` : "";
+    const bookLink = (!opts.hideBook && book)
+      ? `<a class="text-link" href="${href(bookPath(book))}">Il romanzo<span class="arrow" aria-hidden="true">→</span></a>`
+      : "";
+    const sourceName = (p.source || "ANSA").split("·")[0].trim() || "ANSA";
+    return vbItem("press", p.id, "Articolo", `<article class="press-feature">
+      ${cover}
+      <div class="press-feature-copy">
+        <div class="press-source">${esc(p.source || "")}${p.dateLabel ? `<span>${esc(p.dateLabel)}</span>` : ""}</div>
+        ${quote}
+        <h3>${esc(p.title)}</h3>
+        ${p.summary ? `<p>${esc(p.summary)}</p>` : ""}
+        <div class="actions">
+          <a class="button" href="${href(p.href)}"${ext(p.href || "")}>Leggi su ${esc(sourceName)}<span class="arrow" aria-hidden="true">↗</span><span class="sr-only"> (si apre in una nuova scheda)</span></a>
+          ${bookLink}
+        </div>
+      </div>
+    </article>`);
+  }
+  function renderPressHighlight(d, content) {
+    const p = find(content.press, d.pressId) || (content.press || []).find((x) => x.featured);
+    if (!p || (!builderMode && !pressVisible(p, content))) return "";
+    return `<section class="section press-highlight"><div class="container">
+      ${d.eyebrow ? `<div class="eyebrow">${esc(d.eyebrow)}</div>` : ""}
+      ${d.title ? `<h2>${rich(d.title)}</h2>` : ""}
+      ${pressFeatureCard(p, content)}
+    </div></section>`;
   }
 
   function hexOk(v) {
@@ -647,7 +679,7 @@
     const d = section.data || {};
     const map = {
       hero: renderHero, featuredBook: renderFeatured, bookList: renderBookList,
-      pressQuote: renderPressQuote, encounters: renderEncounters, heading: renderHeading,
+      pressQuote: renderPressQuote, pressHighlight: renderPressHighlight, encounters: renderEncounters, heading: renderHeading,
       text: renderText, bio: renderBio, eventsList: renderEvents, pressList: renderPressList,
       resources: renderResources, purchases: renderPurchases, cta: renderCta, imageText: renderImageText,
       gallery: renderGallery, video: renderVideo, columns: renderColumns, quote: renderQuoteBlock, divider: renderDivider,
@@ -674,11 +706,14 @@
   function pressBlock(content, book) {
     const items = pressItems(content, { bookId: book.id });
     if (!items.length) return "";
-    const reviews = items.filter((p) => (p.topic || "libro") !== "presentazione");
+    const featured = items.filter((p) => p.featured);
+    const reviews = items.filter((p) => (p.topic || "libro") !== "presentazione" && !p.featured);
     const events = items.filter((p) => p.topic === "presentazione");
     const block = (title, list) => list.length ? `<div class="press-book"><h3 class="press-book-title">${esc(title)}</h3>${list.map(pressArticle).join("")}</div>` : "";
+    const feats = featured.map((p) => pressFeatureCard(p, content, { hideBook: true })).join("");
     return `<section class="subsection book-press" id="rassegna" style="padding-bottom:70px">
       <h2>Rassegna stampa.</h2>
+      ${feats}
       ${block("Sul romanzo", reviews)}
       ${block("Sulle presentazioni", events)}
     </section>`;

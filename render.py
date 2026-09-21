@@ -174,6 +174,43 @@ class PublicRenderer:
             f"</article>"
         )
 
+    def press_feature_card(self, p: dict, hide_book: bool = False) -> str:
+        book = find(self.content.get("books"), p.get("bookId"))
+        cover = f'<div class="press-feature-cover">{self.cover_stage(book)}</div>' if book and book.get("cover") else ""
+        quote = f'<p class="press-feature-quote">{rich(p.get("quote"))}</p>' if p.get("quote") else ""
+        summary = f'<p>{esc(p.get("summary"))}</p>' if p.get("summary") else ""
+        book_link = ""
+        if not hide_book and book:
+            book_link = (
+                f'<a class="text-link" href="{self.href(self.book_path(book))}">Il romanzo'
+                f'<span class="arrow" aria-hidden="true">→</span></a>'
+            )
+        source_name = ((p.get("source") or "ANSA").split("·")[0]).strip() or "ANSA"
+        date = f'<span>{esc(p.get("dateLabel"))}</span>' if p.get("dateLabel") else ""
+        return (
+            f'<article class="press-feature">{cover}<div class="press-feature-copy">'
+            f'<div class="press-source">{esc(p.get("source") or "")}{date}</div>'
+            f"{quote}<h3>{esc(p.get('title'))}</h3>{summary}"
+            f'<div class="actions">'
+            f'<a class="button" href="{self.href(p.get("href"))}"{self.ext(p.get("href") or "")}>'
+            f'Leggi su {esc(source_name)}<span class="arrow" aria-hidden="true">↗</span>'
+            f'<span class="sr-only"> (si apre in una nuova scheda)</span></a>'
+            f"{book_link}</div></div></article>"
+        )
+
+    def render_press_highlight(self, d: dict) -> str:
+        p = find(self.content.get("press"), d.get("pressId"))
+        if not p:
+            p = next((x for x in (self.content.get("press") or []) if x.get("featured")), None)
+        if not p or not self.press_visible(p):
+            return ""
+        brow = f'<div class="eyebrow">{esc(d.get("eyebrow"))}</div>' if d.get("eyebrow") else ""
+        title = f'<h2>{rich(d.get("title"))}</h2>' if d.get("title") else ""
+        return (
+            f'<section class="section press-highlight"><div class="container">{brow}{title}'
+            f"{self.press_feature_card(p)}</div></section>"
+        )
+
     def img_meta(self, d: dict, prefix: str = "image") -> dict:
         w = d.get(prefix + "Width")
         h = d.get(prefix + "Height")
@@ -696,6 +733,7 @@ class PublicRenderer:
             "featuredBook": self.render_featured,
             "bookList": self.render_book_list,
             "pressQuote": self.render_press_quote,
+            "pressHighlight": self.render_press_highlight,
             "encounters": self.render_encounters,
             "heading": self.render_heading,
             "text": self.render_text,
@@ -722,7 +760,8 @@ class PublicRenderer:
         items = self.press_items({"bookId": book.get("id")})
         if not items:
             return ""
-        reviews = [p for p in items if (p.get("topic") or "libro") != "presentazione"]
+        featured = [p for p in items if p.get("featured")]
+        reviews = [p for p in items if (p.get("topic") or "libro") != "presentazione" and not p.get("featured")]
         events = [p for p in items if p.get("topic") == "presentazione"]
 
         def block(title, lst):
@@ -733,9 +772,10 @@ class PublicRenderer:
                 f'{"".join(self.press_article(p) for p in lst)}</div>'
             )
 
+        feats = "".join(self.press_feature_card(p, hide_book=True) for p in featured)
         return (
             '<section class="subsection book-press" id="rassegna" style="padding-bottom:70px">'
-            f"<h2>Rassegna stampa.</h2>{block('Sul romanzo', reviews)}{block('Sulle presentazioni', events)}"
+            f"<h2>Rassegna stampa.</h2>{feats}{block('Sul romanzo', reviews)}{block('Sulle presentazioni', events)}"
             "</section>"
         )
 

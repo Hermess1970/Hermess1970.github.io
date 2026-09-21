@@ -295,6 +295,21 @@ body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .menu-button{border-r
 .book-promo img{width:100%;height:auto;display:block}
 .book-promo figcaption{margin-top:12px;font-size:.8rem;color:var(--muted)}
 @media print{.book-promo{break-inside:avoid}}
+.press-highlight{padding:12px 0 56px}
+.press-highlight h2{font-size:clamp(2.4rem,4.6vw,4.2rem);max-width:18ch;margin:10px 0 8px;line-height:1.08}
+.press-feature{display:grid;grid-template-columns:minmax(200px,280px) 1fr;gap:48px;align-items:center;padding:28px 0 4px;border-top:1px solid var(--line);margin-top:18px}
+.press-feature-cover .cover-stage{min-height:0;padding:28px 22px}
+.press-feature-cover .cover-stage img{width:176px;max-height:250px}
+.press-feature-cover .stage-note{display:none}
+.press-feature-quote{font-family:var(--serif);font-size:clamp(1.45rem,2.5vw,2.1rem);line-height:1.28;margin:12px 0 14px}
+.press-feature-copy h3{font-size:clamp(1.55rem,2.6vw,2.25rem);margin:0 0 12px;line-height:1.18}
+.press-feature-copy>p{color:var(--muted);max-width:58ch}
+.press-feature .actions{margin-top:22px}
+.book-press .press-feature{margin-top:4px}
+@media(max-width:800px){
+  .press-feature{grid-template-columns:1fr;gap:18px}
+  .press-feature-cover .cover-stage{padding:18px}
+}
 .footer-wa{font-size:.875rem;color:var(--muted);margin-top:12px;max-width:320px;line-height:1.5}
 .footer-wa a{color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px}
 .footer-share{margin-top:28px}

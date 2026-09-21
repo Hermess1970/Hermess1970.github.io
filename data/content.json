@@ -272,6 +272,18 @@
   ],
   "press": [
     {
+      "id": "ansa-cento-nomi",
+      "source": "ANSA · Libri",
+      "dateLabel": "21 settembre 2026",
+      "title": "«Cento nomi», tra realtà e finzione: 50 anni d’Italia vista dall’interno del carcere",
+      "summary": "L’agenzia nazionale dedica un articolo al romanzo: gli anni di piombo raccontati da chi nel carcere lavora, fra realtà documentata e invenzione narrativa.",
+      "quote": "«Tra realtà e finzione, 50 anni di Italia vista dall’interno del carcere»",
+      "href": "https://www.ansa.it/sito/notizie/cultura/libri/2026/09/21/cento-nomi-tra-realta-e-finzione-50-anni-di-italia-vista-dallinterno-del_9ea87604-c89b-4793-a2a1-10408e78b37c.html",
+      "bookId": "cento-nomi",
+      "topic": "libro",
+      "featured": true
+    },
+    {
       "id": "ansa-libri",
       "source": "ANSA · Libri",
       "dateLabel": "5 aprile 2025",
@@ -428,7 +440,7 @@
       "slug": "",
       "title": "Home",
       "seoTitle": "Romanzi, storia e memoria | Erasmo Stasolla",
-      "seoDescription": "Il sito d’autore di Erasmo Stasolla. Scopri Cento nomi, Peppino, Verità sepolte, le presentazioni e la rassegna stampa.",
+      "seoDescription": "Cento nomi su ANSA nazionale. Il sito d’autore di Erasmo Stasolla: Cento nomi, Peppino, Verità sepolte, le presentazioni e la rassegna stampa.",
       "inNav": false,
       "locked": true,
       "sections": [
@@ -454,7 +466,17 @@
           "visible": true,
           "data": {
             "bookId": "cento-nomi",
-            "eyebrow": "03 / Ora in libreria"
+            "eyebrow": "03 / Su ANSA nazionale"
+          }
+        },
+        {
+          "id": "s-press-cento-nomi",
+          "type": "pressHighlight",
+          "visible": true,
+          "data": {
+            "pressId": "ansa-cento-nomi",
+            "eyebrow": "ANSA · 21 settembre 2026",
+            "title": "La stampa nazionale\nparla di *Cento nomi.*"
           }
         },
         {
@@ -538,6 +560,12 @@
           }
         },
         {
+          "id": "s-lsjkiiz",
+          "type": "bio",
+          "visible": true,
+          "data": {}
+        },
+        {
           "id": "s-r-feat-cento-nomi",
           "type": "featuredBook",
           "visible": true,
@@ -546,6 +574,12 @@
             "eyebrow": "Disponibile · 2026",
             "catalog": true
           }
+        },
+        {
+          "id": "s-2bjxz6q",
+          "type": "gallery",
+          "visible": true,
+          "data": {}
         },
         {
           "id": "s-r-feat-peppino",
@@ -700,7 +734,7 @@
       "slug": "materiali",
       "title": "Rassegna stampa",
       "seoTitle": "Rassegna stampa e schede | Erasmo Stasolla",
-      "seoDescription": "Articoli sui romanzi e sulle presentazioni, schede da scaricare e copertine. La rassegna stampa di Erasmo Stasolla.",
+      "seoDescription": "Cento nomi su ANSA nazionale il 21 settembre 2026. Articoli, schede da scaricare e copertine.",
       "inNav": true,
       "locked": true,
       "sections": [
@@ -711,7 +745,17 @@
           "data": {
             "eyebrow": "Rassegna stampa e schede",
             "title": "Articoli, schede,\ncopertine.",
-            "subtitle": "Gli articoli di giornale su ogni romanzo, le schede da scaricare per le presentazioni e le copertine da usare."
+            "subtitle": "ANSA nazionale parla di Cento nomi. Poi gli articoli, le schede da scaricare e le copertine."
+          }
+        },
+        {
+          "id": "s-m-highlight",
+          "type": "pressHighlight",
+          "visible": true,
+          "data": {
+            "pressId": "ansa-cento-nomi",
+            "eyebrow": "In evidenza",
+            "title": "Su ANSA nazionale."
           }
         },
         {
