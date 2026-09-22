@@ -793,6 +793,7 @@
       bindLightbox();
       smartImages(main);
       jumpHash();
+      if (typeof window.initSiteMotion === "function") window.initSiteMotion();
       return;
     }
     if (!page) return;
@@ -802,6 +803,7 @@
     jumpHash();
     if (builderMode) bindBuilder(page, main);
     else showAdminBar(page);
+    if (typeof window.initSiteMotion === "function") window.initSiteMotion();
   }
 
   function jumpHash() {
