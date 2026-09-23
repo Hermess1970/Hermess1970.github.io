@@ -84,6 +84,11 @@
       "id": "f-incontri",
       "label": "Gli incontri",
       "href": "incontri/"
+    },
+    {
+      "id": "f-editoria",
+      "label": "Editoria",
+      "href": "editoria/"
     }
   ],
   "books": [
@@ -956,6 +961,81 @@
             "body": "I collegamenti per gli altri romanzi saranno aggiunti alla loro pubblicazione.",
             "linkLabel": "Scopri i progetti in preparazione",
             "linkHref": "romanzi/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "editoria",
+      "slug": "editoria",
+      "title": "Editoria",
+      "seoTitle": "Dalla pagina al libro | Erasmo Stasolla",
+      "seoDescription": "Un accompagnamento dal manoscritto all’uscita: editing, correzione con report, formattazione, impaginazione, copertina e pubblicazione su Amazon.",
+      "inNav": false,
+      "locked": true,
+      "shareImage": "assets/uploads/editoria-tavolo.jpg",
+      "sections": [
+        {
+          "id": "s-ed-head",
+          "type": "heading",
+          "visible": true,
+          "data": {
+            "eyebrow": "Dalla pagina al libro",
+            "title": "Un testo può\ndiventare un libro.",
+            "subtitle": "Un accompagnamento, passo dopo passo, dal manoscritto all’uscita.",
+            "image": "assets/uploads/editoria-tavolo.jpg",
+            "imageAlt": "Tavolo di lavoro con manoscritto, taccuino e macchina da scrivere",
+            "imageSide": "right",
+            "imageFocus": "center",
+            "imageWidth": "1152",
+            "imageHeight": "864",
+            "imageOrient": "landscape"
+          }
+        },
+        {
+          "id": "s-ed-intro",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "body": "Si parte da un file. Si passa per la cura del testo, la forma, la copertina. Si arriva all’uscita su Amazon.\n\nNon è una casa editrice. È un percorso."
+          }
+        },
+        {
+          "id": "s-ed-path-1",
+          "type": "columns",
+          "visible": true,
+          "data": {
+            "title": "Il percorso.",
+            "col1": "*01 · Editing*\n\nUna prima lettura del manoscritto: struttura, voce, ritmi. Si taglia ciò che pesa e si indica ciò che manca.",
+            "col2": "*02 · Correzione con report*\n\nRevisione linguistica e un report chiaro di ciò che è stato visto, corretto e lasciato in discussione.",
+            "col3": "*03 · Formattazione*\n\nIl testo viene preparato per la stampa e per i formati digitali, senza perdere la misura della pagina."
+          }
+        },
+        {
+          "id": "s-ed-path-2",
+          "type": "columns",
+          "visible": true,
+          "data": {
+            "col1": "*04 · Impaginazione*\n\nMargini, titoli, spazi. Un oggetto che si può sfogliare, non solo un file da scorrere.",
+            "col2": "*05 · Copertina*\n\nUn volto per il libro, sobrio e coerente con la storia. Niente formule, niente copertine di maniera.",
+            "col3": "*06 · Pubblicazione su Amazon*\n\nAccompagnamento all’uscita. Si arriva alla scheda. Non si promettono vendite, né classifiche."
+          }
+        },
+        {
+          "id": "s-ed-cta",
+          "type": "cta",
+          "visible": true,
+          "data": {
+            "buttonLabel": "Scrivete in privato",
+            "buttonHref": "https://wa.me/393669240009?text=Buongiorno%2C%20scrivo%20per%20un%20accompagnamento%20editoriale."
+          }
+        },
+        {
+          "id": "s-ed-associazione",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "body": "L’accompagnamento non ha un compenso. Se volete, potete sostenere le attività dell’Associazione volontari Amici della Sicurezza Terra delle Gravine ETS."
           }
         }
       ]
