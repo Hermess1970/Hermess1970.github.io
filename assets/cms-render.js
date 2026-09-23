@@ -8,7 +8,7 @@
   const TYPE_IT = {
     heading: "Intestazione", text: "Testo", hero: "Hero", gallery: "Galleria", video: "Video",
     columns: "Colonne", quote: "Citazione", divider: "Separatore", featuredBook: "Romanzo",
-    bookList: "Romanzi", pressQuote: "Stampa", encounters: "Incontri", bio: "Biografia",
+    bookList: "Romanzi", upcomingProjects: "Prossimi progetti", pressQuote: "Stampa", encounters: "Incontri", bio: "Biografia",
     eventsList: "Agenda", pressList: "Rassegna", pressHighlight: "Articolo in evidenza", resources: "Schede", purchases: "Acquista",
     cta: "Pulsanti", imageText: "Immagine e testo",
   };
@@ -435,6 +435,57 @@
     return `<section class="section" style="padding-top:0"><div class="container">${withPhoto(d, head + `<div class="works">${rows}</div>`)}</div></section>`;
   }
 
+  function upcomingBooks(content) {
+    return (content.books || [])
+      .filter((b) => (b.status || "") === "upcoming")
+      .sort((a, b) => (Number(a.upcomingOrder) || 99) - (Number(b.upcomingOrder) || 99));
+  }
+
+  function upcomingCover(book) {
+    if (book.cover) return `<div class="upcoming-media">${coverStage(book)}</div>`;
+    return `<div class="upcoming-cover" aria-hidden="true"><span>${esc(book.title)}</span></div>`;
+  }
+
+  function upcomingCard(book) {
+    const sub = book.subtitle ? `<p class="upcoming-sub">${esc(book.subtitle)}</p>` : "";
+    return `<article class="upcoming-card">
+      ${upcomingCover(book)}
+      <div class="upcoming-copy">
+        <div class="eyebrow">${esc(book.statusLabel || "Prossimamente")}</div>
+        <h3>${esc(book.title)}</h3>
+        ${sub}
+        ${paras(book.body || book.summary || "")}
+      </div>
+    </article>`;
+  }
+
+  function renderUpcomingProjects(d, content) {
+    const books = upcomingBooks(content);
+    if (!books.length && !builderMode) return "";
+    if (d.teaser) {
+      const items = books.map((b) => `<li><strong>${esc(b.title)}</strong>${b.subtitle ? `<em>${esc(b.subtitle)}</em>` : ""}</li>`).join("");
+      return `<section class="section upcoming-teaser"><div class="container">
+        ${d.eyebrow ? `<div class="eyebrow">${esc(d.eyebrow)}</div>` : ""}
+        ${d.title ? `<h2>${rich(d.title)}</h2>` : ""}
+        ${d.subtitle ? `<p class="upcoming-lead">${esc(d.subtitle)}</p>` : ""}
+        <ol class="upcoming-index">${items}</ol>
+        <div class="actions">
+          <a class="text-link" href="${href(d.linkHref || "romanzi/#prossimi-progetti")}">${esc(d.linkLabel || "Tutti i progetti")}<span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div></section>`;
+    }
+    const intro = d.intro ? `<div class="upcoming-intro">${paras(d.intro)}</div>` : "";
+    const close = d.closing ? `<div class="upcoming-close">${paras(d.closing)}</div>` : "";
+    return `<section class="section upcoming-projects" id="prossimi-progetti"><div class="container">
+      ${d.eyebrow ? `<div class="eyebrow">${esc(d.eyebrow)}</div>` : ""}
+      ${d.title ? `<h2>${rich(d.title)}</h2>` : ""}
+      ${d.subtitle ? `<p class="upcoming-lead">${esc(d.subtitle)}</p>` : ""}
+      ${intro}
+      <div class="upcoming-grid">${books.map(upcomingCard).join("")}</div>
+      ${close}
+    </div></section>`;
+  }
+
   function renderPressQuote(d) {
     const strip = `<div class="press-strip">
       <span class="press-mark">${esc(d.source || "")}</span>
@@ -678,7 +729,7 @@
     if (section.visible === false && !builderMode) return "";
     const d = section.data || {};
     const map = {
-      hero: renderHero, featuredBook: renderFeatured, bookList: renderBookList,
+      hero: renderHero, featuredBook: renderFeatured, bookList: renderBookList, upcomingProjects: renderUpcomingProjects,
       pressQuote: renderPressQuote, pressHighlight: renderPressHighlight, encounters: renderEncounters, heading: renderHeading,
       text: renderText, bio: renderBio, eventsList: renderEvents, pressList: renderPressList,
       resources: renderResources, purchases: renderPurchases, cta: renderCta, imageText: renderImageText,
@@ -809,8 +860,13 @@
   function jumpHash() {
     const id = decodeURIComponent((location.hash || "").replace(/^#/, ""));
     if (!id) return;
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const go = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    go();
+    requestAnimationFrame(go);
+    setTimeout(go, 120);
   }
 
   function smartImages(root) {

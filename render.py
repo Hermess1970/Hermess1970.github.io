@@ -403,6 +403,54 @@ class PublicRenderer:
             "</div></section>"
         )
 
+    def upcoming_books(self) -> list:
+        books = [b for b in (self.content.get("books") or []) if (b.get("status") or "") == "upcoming"]
+        return sorted(books, key=lambda b: int(b.get("upcomingOrder") or 99))
+
+    def upcoming_cover(self, book: dict) -> str:
+        if book.get("cover"):
+            return f'<div class="upcoming-media">{self.cover_stage(book)}</div>'
+        return f'<div class="upcoming-cover" aria-hidden="true"><span>{esc(book.get("title"))}</span></div>'
+
+    def upcoming_card(self, book: dict) -> str:
+        sub = f'<p class="upcoming-sub">{esc(book.get("subtitle"))}</p>' if book.get("subtitle") else ""
+        return (
+            f'<article class="upcoming-card">{self.upcoming_cover(book)}<div class="upcoming-copy">'
+            f'<div class="eyebrow">{esc(book.get("statusLabel") or "Prossimamente")}</div>'
+            f'<h3>{esc(book.get("title"))}</h3>{sub}'
+            f'{paras(book.get("body") or book.get("summary") or "")}'
+            "</div></article>"
+        )
+
+    def render_upcoming_projects(self, d: dict) -> str:
+        books = self.upcoming_books()
+        if not books:
+            return ""
+        brow = f'<div class="eyebrow">{esc(d.get("eyebrow"))}</div>' if d.get("eyebrow") else ""
+        title = f'<h2>{rich(d.get("title"))}</h2>' if d.get("title") else ""
+        lead = f'<p class="upcoming-lead">{esc(d.get("subtitle"))}</p>' if d.get("subtitle") else ""
+        if d.get("teaser"):
+            items = []
+            for b in books:
+                sub = f'<em>{esc(b.get("subtitle"))}</em>' if b.get("subtitle") else ""
+                items.append(f'<li><strong>{esc(b.get("title"))}</strong>{sub}</li>')
+            href = self.href(d.get("linkHref") or "romanzi/#prossimi-progetti")
+            label = esc(d.get("linkLabel") or "Tutti i progetti")
+            return (
+                f'<section class="section upcoming-teaser"><div class="container">{brow}{title}{lead}'
+                f'<ol class="upcoming-index">{"".join(items)}</ol>'
+                f'<div class="actions"><a class="text-link" href="{href}">{label}'
+                f'<span class="arrow" aria-hidden="true">→</span></a></div></div></section>'
+            )
+        intro = f'<div class="upcoming-intro">{paras(d.get("intro"))}</div>' if d.get("intro") else ""
+        close = f'<div class="upcoming-close">{paras(d.get("closing"))}</div>' if d.get("closing") else ""
+        cards = "".join(self.upcoming_card(b) for b in books)
+        return (
+            f'<section class="section upcoming-projects" id="prossimi-progetti"><div class="container">'
+            f"{brow}{title}{lead}{intro}"
+            f'<div class="upcoming-grid">{cards}</div>{close}</div></section>'
+        )
+
     def render_press_quote(self, d: dict) -> str:
         note = f'<p class="small">{esc(d.get("note"))}</p>' if d.get("note") else ""
         link = ""
@@ -732,6 +780,7 @@ class PublicRenderer:
             "hero": self.render_hero,
             "featuredBook": self.render_featured,
             "bookList": self.render_book_list,
+            "upcomingProjects": self.render_upcoming_projects,
             "pressQuote": self.render_press_quote,
             "pressHighlight": self.render_press_highlight,
             "encounters": self.render_encounters,

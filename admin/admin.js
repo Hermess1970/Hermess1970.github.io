@@ -9,6 +9,7 @@ const TYPES = {
   divider: { label: "Separatore", hint: "Riga o spazio tra le sezioni" },
   featuredBook: { label: "Romanzo in evidenza", hint: "Copertina e scheda di un libro" },
   bookList: { label: "Elenco romanzi", hint: "Lista dei titoli" },
+  upcomingProjects: { label: "Prossimi progetti", hint: "Schede dei romanzi in arrivo" },
   pressQuote: { label: "Citazione stampa", hint: "Frase in evidenza da un articolo" },
   pressHighlight: { label: "Articolo in evidenza", hint: "Grande sezione per una notizia di stampa" },
   encounters: { label: "Blocco incontri", hint: "Sezione scura con un appuntamento" },
@@ -23,9 +24,9 @@ const TYPES = {
 const TYPE_GROUPS = [
   ["Racconto", ["heading", "text", "hero", "quote", "columns", "cta"]],
   ["Immagini e media", ["gallery", "imageText", "video", "divider"]],
-  ["Libri e incontri", ["featuredBook", "bookList", "bio", "encounters", "eventsList", "pressHighlight", "pressQuote", "pressList", "purchases", "resources"]],
+  ["Libri e incontri", ["featuredBook", "bookList", "upcomingProjects", "bio", "encounters", "eventsList", "pressHighlight", "pressQuote", "pressList", "purchases", "resources"]],
 ];
-const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight"]);
+const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight", "upcomingProjects"]);
 
 const IMAGE_POS = [
   ["right", "A destra del testo"],
@@ -142,6 +143,16 @@ const FIELDS = {
       ["upcoming", "Solo bozze (non si vedono sul sito)"],
     ]],
   ],
+  upcomingProjects: [
+    ["eyebrow", "Sopratitolo"],
+    ["title", "Titolo (*corsivo*, una riga per riga)", "textarea"],
+    ["subtitle", "Sottotitolo", "textarea"],
+    ["intro", "Introduzione", "textarea"],
+    ["closing", "Chiusura", "textarea"],
+    ["teaser", "Versione breve (home)", "check"],
+    ["linkLabel", "Collegamento (solo versione breve)"],
+    ["linkHref", "Indirizzo del collegamento"],
+  ],
   pressQuote: [
     ["source", "Testata"],
     ["quote", "Citazione", "textarea"],
@@ -247,6 +258,7 @@ const FIELDS = {
 
 const BOOK_FIELDS = [
   ["title", "Titolo"],
+  ["subtitle", "Sottotitolo (per i progetti in arrivo)"],
   ["cover", "Copertina / immagine di anteprima", "image"],
   ["coverFocus", "Inquadratura della copertina", "select", IMAGE_FOCUS],
   ["coverFit", "Come entra nel riquadro", "select", IMAGE_FIT],
@@ -257,6 +269,7 @@ const BOOK_FIELDS = [
   ["shareImage", "Immagine per i social", "image", null, "Opzionale. JPG o PNG, 1200 × 630 pixel, orizzontale. Se è vuoto, in condivisione si usa la copertina del romanzo."],
   ["slug", "Indirizzo (es. verita-sepolte)"],
   ["number", "Numero in elenco"],
+  ["upcomingOrder", "Ordine nei prossimi progetti (1, 2, 3…)"],
   ["eyebrow", "Sopratitolo"],
   ["statusLabel", "Etichetta (es. Disponibile)"],
   ["genre", "Genere"],
@@ -1013,11 +1026,11 @@ function nestedEntriesHtml(page, section) {
   if (!page) return "";
   const d = section.data || {};
   let rows = "";
-  if (section.type === "bookList" || section.type === "featuredBook" || section.type === "purchases") {
+  if (section.type === "bookList" || section.type === "featuredBook" || section.type === "purchases" || section.type === "upcomingProjects") {
     let books = content.books || [];
     if (section.type === "featuredBook" || section.type === "purchases") {
       books = books.filter((b) => !d.bookId || b.id === d.bookId);
-    } else if (d.filter === "upcoming") books = books.filter((b) => !bookIsLive(b));
+    } else if (section.type === "upcomingProjects" || d.filter === "upcoming") books = books.filter((b) => !bookIsLive(b));
     else if (d.filter === "published") books = books.filter((b) => bookIsLive(b) && !b.featured);
     rows = books.map((b) => `<a href="#/costruttore/${esc(page.id)}/romanzo/${esc(b.id)}">${esc(b.title)}</a>`).join("")
       + `<a href="#/costruttore/${esc(page.id)}/romanzo/nuovo">+ Nuovo romanzo</a>`;
