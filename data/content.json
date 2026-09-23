@@ -57,6 +57,12 @@
       "style": "link"
     },
     {
+      "id": "m-anteprima",
+      "label": "Anteprima",
+      "href": "romanzi/#prossimi-progetti",
+      "style": "button"
+    },
+    {
       "id": "m-acquista",
       "label": "Acquista",
       "href": "acquista/",

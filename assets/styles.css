@@ -118,8 +118,8 @@ h1,h2,h3,.seller-name,.press-strip p{overflow-wrap:anywhere}
 .cms-styled.align-center .actions,.cms-styled.align-center .section-head{justify-content:center}
 .cms-styled.width-narrow .container{width:min(720px,calc(100% - 40px))}
 .cms-styled.width-wide .container{width:min(1400px,calc(100% - 32px))}
-body.btn-rounded .button,body.btn-rounded .nav-buy,body.btn-rounded .menu-button{border-radius:10px}
-body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .menu-button{border-radius:999px}
+body.btn-rounded .button,body.btn-rounded .nav-buy,body.btn-rounded .nav-btn,body.btn-rounded .menu-button{border-radius:10px}
+body.btn-pill .button,body.btn-pill .nav-buy,body.btn-pill .nav-btn,body.btn-pill .menu-button{border-radius:999px}
 @media(max-width:800px){
   .sec-with-image.side-right,.sec-with-image.side-left{grid-template-columns:1fr}
   .sec-photo img{aspect-ratio:4/3}
@@ -404,7 +404,7 @@ body:after{
 .has-motion .fade-in{animation:none}
 @keyframes settle{from{transform:translateY(16px)}to{transform:none}}
 .has-motion .reveal.is-in{animation:settle .7s ease both}
-.nav>a:not(.nav-buy):after{
+.nav>a:not(.nav-buy):not(.nav-btn):after{
   content:"";
   position:absolute;
   bottom:5px;
@@ -420,8 +420,8 @@ body:after{
   transform:scaleX(1);
   transition:none;
 }
-.nav>a:not(.nav-buy):hover:after,
-.nav>a:not(.nav-buy):focus-visible:after{transform:scaleX(1)}
+.nav>a:not(.nav-buy):not(.nav-btn):hover:after,
+.nav>a:not(.nav-buy):not(.nav-btn):focus-visible:after{transform:scaleX(1)}
 .text-link .arrow,
 .button .arrow,
 .work-row .arrow{
@@ -447,6 +447,24 @@ body:after{
   .cms-styled.theme-dark:before{display:none!important}
 }
 .is-builder .site-header.is-away{transform:none}
+
+.nav .nav-btn{
+  border:1px solid var(--red);
+  color:var(--red);
+  padding:10px 18px;
+  margin-left:4px;
+}
+.nav .nav-btn:hover,
+.nav .nav-btn[aria-current=page]{
+  background:var(--red);
+  color:#fff;
+}
+.nav>a.nav-btn:after,
+.nav>a.nav-btn:hover:after,
+.nav>a.nav-btn:focus-visible:after{content:none;transform:none;background:none}
+@media(max-width:800px){
+  .nav .nav-btn{margin:8px 0 0;text-align:center}
+}
 
 .upcoming-projects{scroll-margin-top:110px}
 .upcoming-projects .eyebrow,

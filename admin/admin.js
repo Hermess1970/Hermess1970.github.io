@@ -345,7 +345,7 @@ const RES_FIELDS = [
 const MENU_FIELDS = [
   ["label", "Voce"],
   ["href", "Indirizzo (es. romanzi/)"],
-  ["style", "Stile", "select", [["link", "Normale"], ["buy", "Pulsante Acquista"]]],
+  ["style", "Stile", "select", [["link", "Normale"], ["button", "Pulsante"], ["buy", "Pulsante Acquista"]]],
 ];
 const FOOTER_FIELDS = [
   ["label", "Voce"],
@@ -1264,7 +1264,7 @@ function navListView(key, title, lead, addHash, items, listId, editBase) {
         <div class="drag-copy">
           <strong>${esc(e.label)}</strong>
           <span class="muted">${esc(e.href || "/")}</span>
-          ${e.style === "buy" ? `<span class="badge">Pulsante Acquista</span>` : ""}
+          ${e.style === "buy" ? `<span class="badge">Pulsante Acquista</span>` : e.style === "button" ? `<span class="badge">Pulsante</span>` : ""}
         </div>
         <div class="actions">
           <a class="btn btn-secondary" href="${editBase}/${esc(e.id)}">Modifica</a>

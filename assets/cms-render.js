@@ -180,9 +180,16 @@
     const nav = document.getElementById("main-nav");
     if (nav) {
       nav.innerHTML = (content.menu || []).map((item) => {
-        const slug = (item.href || "").replace(/\/$/, "");
-        const current = slug && (currentSlug === slug || currentSlug.startsWith(slug + "/")) ? ' aria-current="page"' : "";
-        const cls = item.style === "buy" ? ' class="nav-buy"' : "";
+        const raw = item.href || "";
+        const slug = raw.split("#")[0].replace(/\/$/, "");
+        const hash = raw.includes("#") ? raw.split("#").slice(1).join("#") : "";
+        let current = "";
+        if (hash) {
+          if ((currentSlug === slug || currentSlug.startsWith(slug + "/")) && location.hash === "#" + hash) current = ' aria-current="page"';
+        } else if (slug && (currentSlug === slug || currentSlug.startsWith(slug + "/"))) {
+          current = ' aria-current="page"';
+        }
+        const cls = item.style === "buy" ? ' class="nav-buy"' : item.style === "button" ? ' class="nav-btn"' : "";
         return `<a href="${href(item.href)}"${cls}${current}>${esc(item.label)}</a>`;
       }).join("");
     }
