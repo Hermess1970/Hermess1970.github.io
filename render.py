@@ -445,9 +445,10 @@ class PublicRenderer:
         intro = f'<div class="upcoming-intro">{paras(d.get("intro"))}</div>' if d.get("intro") else ""
         close = f'<div class="upcoming-close">{paras(d.get("closing"))}</div>' if d.get("closing") else ""
         cards = "".join(self.upcoming_card(b) for b in books)
+        head = f"{brow}{title}{lead}{intro}"
         return (
             f'<section class="section upcoming-projects" id="prossimi-progetti"><div class="container">'
-            f"{brow}{title}{lead}{intro}"
+            f"{self.with_photo(d, head)}"
             f'<div class="upcoming-grid">{cards}</div>{close}</div></section>'
         )
 

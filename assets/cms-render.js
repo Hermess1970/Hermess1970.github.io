@@ -483,11 +483,12 @@
     }
     const intro = d.intro ? `<div class="upcoming-intro">${paras(d.intro)}</div>` : "";
     const close = d.closing ? `<div class="upcoming-close">${paras(d.closing)}</div>` : "";
-    return `<section class="section upcoming-projects" id="prossimi-progetti"><div class="container">
-      ${d.eyebrow ? `<div class="eyebrow">${esc(d.eyebrow)}</div>` : ""}
+    const head = `${d.eyebrow ? `<div class="eyebrow">${esc(d.eyebrow)}</div>` : ""}
       ${d.title ? `<h2>${rich(d.title)}</h2>` : ""}
       ${d.subtitle ? `<p class="upcoming-lead">${esc(d.subtitle)}</p>` : ""}
-      ${intro}
+      ${intro}`;
+    return `<section class="section upcoming-projects" id="prossimi-progetti"><div class="container">
+      ${withPhoto(d, head)}
       <div class="upcoming-grid">${books.map(upcomingCard).join("")}</div>
       ${close}
     </div></section>`;

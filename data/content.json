@@ -726,7 +726,14 @@
             "title": "Prossimi progetti\neditoriali.",
             "subtitle": "Le nuove storie di Erasmo Stasolla in arrivo nei prossimi dodici mesi.",
             "intro": "Storie diverse per epoca, ambientazione e genere, unite da un filo comune: l’uomo davanti alla memoria, alla Storia, al dolore, alla fede e alle domande che non sempre trovano una risposta semplice.",
-            "closing": "Il caso Moro osservato da un margine. Il mistero della vita oltre la morte. Le domande della fede. La memoria di chi visse accanto a Peppino Impastato. Le tracce del brigantaggio custodite nelle gravine. La scomparsa di Mauro De Mauro.\n\nStorie differenti, attraversate dalla stessa necessità: raccontare la grande Storia attraverso le vite degli uomini e lasciare spazio alle domande quando una risposta certa non esiste."
+            "closing": "Il caso Moro osservato da un margine. Il mistero della vita oltre la morte. Le domande della fede. La memoria di chi visse accanto a Peppino Impastato. Le tracce del brigantaggio custodite nelle gravine. La scomparsa di Mauro De Mauro.\n\nStorie differenti, attraversate dalla stessa necessità: raccontare la grande Storia attraverso le vite degli uomini e lasciare spazio alle domande quando una risposta certa non esiste.",
+            "image": "assets/uploads/erasmo-stasolla-anteprima.jpg",
+            "imageAlt": "Erasmo Stasolla",
+            "imageSide": "right",
+            "imageFocus": "center",
+            "imageWidth": "768",
+            "imageHeight": "1024",
+            "imageOrient": "portrait"
           }
         }
       ]

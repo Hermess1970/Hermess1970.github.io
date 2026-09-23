@@ -467,6 +467,8 @@ body:after{
 }
 
 .upcoming-projects{scroll-margin-top:110px}
+.upcoming-projects .sec-with-image{margin-bottom:8px}
+.upcoming-projects .sec-photo img{object-position:center 18%}
 .upcoming-projects .eyebrow,
 .upcoming-teaser .eyebrow{color:var(--red);margin-bottom:14px}
 .upcoming-lead{

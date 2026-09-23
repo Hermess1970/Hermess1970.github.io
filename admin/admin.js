@@ -26,7 +26,7 @@ const TYPE_GROUPS = [
   ["Immagini e media", ["gallery", "imageText", "video", "divider"]],
   ["Libri e incontri", ["featuredBook", "bookList", "upcomingProjects", "bio", "encounters", "eventsList", "pressHighlight", "pressQuote", "pressList", "purchases", "resources"]],
 ];
-const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight", "upcomingProjects"]);
+const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight"]);
 
 const IMAGE_POS = [
   ["right", "A destra del testo"],
