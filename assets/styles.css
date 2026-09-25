@@ -468,7 +468,10 @@ body:after{
 
 .upcoming-projects{scroll-margin-top:110px}
 .upcoming-projects .sec-with-image{margin-bottom:8px}
-.upcoming-projects .sec-photo img{object-position:center 18%}
+.upcoming-projects .sec-with-image.side-top{margin-bottom:28px;gap:28px}
+.upcoming-projects .sec-photo.orient-portrait img{object-position:center 18%}
+.upcoming-projects .sec-photo.orient-landscape img{object-position:center 46%}
+.upcoming-projects .sec-with-image.side-top .sec-photo.orient-landscape{--frame-ratio:16/10}
 .upcoming-projects .eyebrow,
 .upcoming-teaser .eyebrow{color:var(--red);margin-bottom:14px}
 .upcoming-lead{
