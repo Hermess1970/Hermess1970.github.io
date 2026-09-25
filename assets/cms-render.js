@@ -448,9 +448,19 @@
       .sort((a, b) => (Number(a.upcomingOrder) || 99) - (Number(b.upcomingOrder) || 99));
   }
 
+  const COVER_TONES = [
+    "assets/uploads/copertina-in-arrivo-01-inchiostro.jpg",
+    "assets/uploads/copertina-in-arrivo-02-rosso.jpg",
+    "assets/uploads/copertina-in-arrivo-03-carta.jpg",
+    "assets/uploads/copertina-in-arrivo-04-ardesia.jpg",
+    "assets/uploads/copertina-in-arrivo-05-oliva.jpg",
+    "assets/uploads/copertina-in-arrivo-06-notte.jpg",
+  ];
   function upcomingCover(book) {
     if (book.cover) return `<div class="upcoming-media">${coverStage(book)}</div>`;
-    return `<div class="upcoming-cover" aria-hidden="true"><span>${esc(book.title)}</span></div>`;
+    const n = Number(book.upcomingOrder) || 1;
+    const src = COVER_TONES[(Math.max(1, n) - 1) % COVER_TONES.length];
+    return `<div class="upcoming-cover"><img class="smart-img" src="${asset(src)}" alt="Copertina in arrivo" width="864" height="1152" loading="lazy" decoding="async"></div>`;
   }
 
   function upcomingCard(book) {

@@ -407,10 +407,24 @@ class PublicRenderer:
         books = [b for b in (self.content.get("books") or []) if (b.get("status") or "") == "upcoming"]
         return sorted(books, key=lambda b: int(b.get("upcomingOrder") or 99))
 
+    COVER_TONES = (
+        "assets/uploads/copertina-in-arrivo-01-inchiostro.jpg",
+        "assets/uploads/copertina-in-arrivo-02-rosso.jpg",
+        "assets/uploads/copertina-in-arrivo-03-carta.jpg",
+        "assets/uploads/copertina-in-arrivo-04-ardesia.jpg",
+        "assets/uploads/copertina-in-arrivo-05-oliva.jpg",
+        "assets/uploads/copertina-in-arrivo-06-notte.jpg",
+    )
+
     def upcoming_cover(self, book: dict) -> str:
         if book.get("cover"):
             return f'<div class="upcoming-media">{self.cover_stage(book)}</div>'
-        return f'<div class="upcoming-cover" aria-hidden="true"><span>{esc(book.get("title"))}</span></div>'
+        n = int(book.get("upcomingOrder") or 1)
+        src = self.COVER_TONES[(max(1, n) - 1) % len(self.COVER_TONES)]
+        return (
+            f'<div class="upcoming-cover"><img class="smart-img" src="{self.asset(src)}" '
+            'alt="Copertina in arrivo" width="864" height="1152" loading="lazy" decoding="async"></div>'
+        )
 
     def upcoming_card(self, book: dict) -> str:
         sub = f'<p class="upcoming-sub">{esc(book.get("subtitle"))}</p>' if book.get("subtitle") else ""

@@ -494,17 +494,14 @@ body:after{
 .upcoming-cover{
   aspect-ratio:3/4;
   background:#e1e3e1;
-  display:flex;
-  align-items:flex-end;
-  padding:22px 24px;
+  overflow:hidden;
   margin-bottom:22px;
 }
-.upcoming-cover span{
-  font-family:var(--serif);
-  font-size:1.55rem;
-  line-height:1.15;
-  letter-spacing:-.03em;
-  max-width:14ch;
+.upcoming-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .upcoming-media .cover-stage{min-height:0;padding:28px 20px;margin-bottom:22px}
 .upcoming-media .cover-stage img{width:160px;max-height:230px}
