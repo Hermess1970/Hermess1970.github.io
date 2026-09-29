@@ -610,8 +610,46 @@ body:after{
   margin-top:8px;
 }
 [data-page="editoria"] .cms-cols > div{
+  position:relative;
   padding:28px 0 36px;
   border-top:1px solid var(--ink);
+}
+.has-motion [data-page="editoria"] .cms-cols > div.path-wait{
+  border-top-color:transparent;
+}
+.has-motion [data-page="editoria"] .cms-cols > div.path-wait:before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:1px;
+  background:var(--ink);
+  transform:scaleX(0);
+  transform-origin:left center;
+}
+.has-motion [data-page="editoria"] .cms-cols > div.path-wait em{
+  opacity:0;
+  transform:translate3d(0,.45rem,0);
+}
+.has-motion [data-page="editoria"] .cms-cols > div.path-wait.is-in:before{
+  animation:pathLine .7s cubic-bezier(.16,1,.3,1) var(--d,0s) both;
+}
+.has-motion [data-page="editoria"] .cms-cols > div.path-wait.is-in em{
+  animation:pathLabel .85s cubic-bezier(.16,1,.3,1) calc(var(--d,0s) + .14s) both;
+}
+@keyframes pathLine{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@keyframes pathLabel{
+  from{opacity:0;transform:translate3d(0,.45rem,0)}
+  to{opacity:1;transform:none}
+}
+@media print{
+  [data-page="editoria"] .cms-cols > div{border-top-color:var(--ink)!important}
+  [data-page="editoria"] .cms-cols > div em{opacity:1!important;transform:none!important}
+  [data-page="editoria"] .cms-cols > div:before{display:none!important}
 }
 [data-page="editoria"] .cms-cols > div em{
   display:block;
