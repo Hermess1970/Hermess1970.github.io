@@ -63,6 +63,12 @@
       "style": "button"
     },
     {
+      "id": "m-editoria",
+      "label": "Editoria",
+      "href": "editoria/",
+      "style": "button"
+    },
+    {
       "id": "m-acquista",
       "label": "Acquista",
       "href": "acquista/",
@@ -971,7 +977,7 @@
       "title": "Editoria",
       "seoTitle": "Dalla pagina al libro | Erasmo Stasolla",
       "seoDescription": "Un accompagnamento dal manoscritto all’uscita: editing, correzione con report, formattazione, impaginazione, copertina e pubblicazione su Amazon.",
-      "inNav": false,
+      "inNav": true,
       "locked": true,
       "shareImage": "assets/uploads/editoria-tavolo.jpg",
       "sections": [
@@ -985,7 +991,7 @@
             "subtitle": "Un accompagnamento, passo dopo passo, dal manoscritto all’uscita.",
             "image": "assets/uploads/editoria-tavolo.jpg",
             "imageAlt": "Tavolo di lavoro con manoscritto, taccuino e macchina da scrivere",
-            "imageSide": "right",
+            "imageSide": "top",
             "imageFocus": "center",
             "imageWidth": "1152",
             "imageHeight": "864",
