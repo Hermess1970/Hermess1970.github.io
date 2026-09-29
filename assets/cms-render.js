@@ -10,7 +10,7 @@
     columns: "Colonne", quote: "Citazione", divider: "Separatore", featuredBook: "Romanzo",
     bookList: "Romanzi", upcomingProjects: "Prossimi progetti", pressQuote: "Stampa", encounters: "Incontri", bio: "Biografia",
     eventsList: "Agenda", pressList: "Rassegna", pressHighlight: "Articolo in evidenza", resources: "Schede", purchases: "Acquista",
-    cta: "Pulsanti", imageText: "Immagine e testo",
+    cta: "Pulsanti", imageText: "Immagine e testo", path: "Percorso",
   };
 
   function esc(v) {
@@ -666,7 +666,8 @@
   }
 
   function renderCta(d) {
-    return `<div class="container" style="padding-bottom:50px">${withPhoto(d, actions(d))}</div>`;
+    const note = d.note ? `<p class="ed-cta-note">${esc(d.note)}</p>` : "";
+    return `<div class="container cms-cta">${note}${withPhoto(d, actions(d))}</div>`;
   }
 
   function renderImageText(d) {
@@ -719,6 +720,21 @@
     </section>`;
   }
 
+  function renderPath(d) {
+    const items = Array.isArray(d.items) ? d.items.filter((it) => it && (it.title || it.body)) : [];
+    const lis = items.map((it, i) => {
+      const n = esc(it.n || String(i + 1).padStart(2, "0"));
+      const title = esc(it.title || "");
+      const body = it.body ? `<p>${esc(it.body)}</p>` : "";
+      return `<li><em>${n}</em><div><h3>${title}</h3>${body}</div></li>`;
+    }).join("");
+    return `<section class="container ed-timeline">
+      ${d.title ? `<h2>${rich(d.title)}</h2>` : ""}
+      ${d.lead ? `<p class="ed-timeline-lead">${esc(d.lead)}</p>` : ""}
+      <ol aria-label="Fasi del percorso">${lis}</ol>
+    </section>`;
+  }
+
   function renderQuoteBlock(d) {
     return `<section class="container cms-quote">
       <blockquote><p>${esc(d.quote || "")}</p>${d.cite ? `<cite>${esc(d.cite)}</cite>` : ""}</blockquote>
@@ -751,7 +767,7 @@
       pressQuote: renderPressQuote, pressHighlight: renderPressHighlight, encounters: renderEncounters, heading: renderHeading,
       text: renderText, bio: renderBio, eventsList: renderEvents, pressList: renderPressList,
       resources: renderResources, purchases: renderPurchases, cta: renderCta, imageText: renderImageText,
-      gallery: renderGallery, video: renderVideo, columns: renderColumns, quote: renderQuoteBlock, divider: renderDivider,
+      gallery: renderGallery, video: renderVideo, columns: renderColumns, quote: renderQuoteBlock, divider: renderDivider, path: renderPath,
     };
     const fn = map[section.type];
     const html = fn ? styleWrap(d, fn(d, content)) : "";

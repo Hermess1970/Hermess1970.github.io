@@ -19,14 +19,15 @@ const TYPES = {
   resources: { label: "Schede da scaricare", hint: "PDF, biografie, copertine" },
   purchases: { label: "Dove acquistare", hint: "Collegamenti alle librerie" },
   cta: { label: "Pulsanti", hint: "Inviti all’azione" },
+  path: { label: "Percorso", hint: "Fasi numerate di un percorso" },
   imageText: { label: "Immagine e testo", hint: "Foto accanto a un testo" },
 };
 const TYPE_GROUPS = [
-  ["Racconto", ["heading", "text", "hero", "quote", "columns", "cta"]],
+  ["Racconto", ["heading", "text", "hero", "quote", "columns", "path", "cta"]],
   ["Immagini e media", ["gallery", "imageText", "video", "divider"]],
   ["Libri e incontri", ["featuredBook", "bookList", "upcomingProjects", "bio", "encounters", "eventsList", "pressHighlight", "pressQuote", "pressList", "purchases", "resources"]],
 ];
-const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight"]);
+const NO_EXTRA_IMAGE = new Set(["featuredBook", "purchases", "gallery", "video", "columns", "quote", "divider", "pressHighlight", "path"]);
 
 const IMAGE_POS = [
   ["right", "A destra del testo"],
@@ -213,8 +214,13 @@ const FIELDS = {
   cta: [
     ["buttonLabel", "Pulsante"],
     ["buttonHref", "Indirizzo"],
+    ["note", "Frase accanto al pulsante", "textarea"],
     ["linkLabel", "Collegamento"],
     ["linkHref", "Indirizzo"],
+  ],
+  path: [
+    ["title", "Titolo della sezione"],
+    ["lead", "Testo introduttivo", "textarea"],
   ],
   imageText: [
     ["image", "Immagine", "image"],

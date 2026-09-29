@@ -975,8 +975,8 @@
       "id": "editoria",
       "slug": "editoria",
       "title": "Editoria",
-      "seoTitle": "Dalla pagina al libro | Erasmo Stasolla",
-      "seoDescription": "Un accompagnamento dal manoscritto all’uscita: editing, correzione con report, formattazione, impaginazione, copertina e pubblicazione su Amazon.",
+      "seoTitle": "Dal manoscritto ad Amazon KDP | Erasmo Stasolla",
+      "seoDescription": "Aiuto alla pubblicazione su Amazon: solo per chi vuole KDP. Si spiega cos’è Kindle Direct Publishing e si preparano formattazione, impaginazione e copertina. L’account resta tuo.",
       "inNav": true,
       "locked": true,
       "shareImage": "assets/uploads/editoria-tavolo.jpg",
@@ -987,8 +987,8 @@
           "visible": true,
           "data": {
             "eyebrow": "Dalla pagina al libro",
-            "title": "Un testo può\ndiventare un libro.",
-            "subtitle": "Un accompagnamento, passo dopo passo, dal manoscritto all’uscita.",
+            "title": "Hai scritto\nil tuo libro.",
+            "subtitle": "Se vuoi pubblicarlo su Amazon, va preparato per diventare un volume.",
             "image": "assets/uploads/editoria-tavolo.jpg",
             "imageAlt": "Tavolo di lavoro con manoscritto, taccuino e macchina da scrivere",
             "imageSide": "top",
@@ -1003,37 +1003,86 @@
           "type": "text",
           "visible": true,
           "data": {
-            "body": "Si parte da un file. Si passa per la cura del testo, la forma, la copertina. Si arriva all’uscita su Amazon.\n\nNon è una casa editrice. È un percorso."
+            "styleTheme": "lead",
+            "body": "Impaginazione, formattazione, copertina quando necessaria e un aiuto passo dopo passo per pubblicare su Amazon.\n\nPubblicare in autonomia può sembrare semplice finché non ci si trova davanti a formati, margini, copertine, dimensioni del dorso, PDF, anteprima di stampa, metadati e impostazioni della piattaforma. È qui che posso darti una mano, condividendo l’esperienza maturata pubblicando i miei libri su Amazon."
           }
         },
         {
-          "id": "s-ed-path-1",
+          "id": "s-ed-kdp",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Solo per Amazon",
+            "body": "Questo aiuto è pensato per chi vuole pubblicare su Amazon. Non riguarda altre piattaforme, né l’invio del manoscritto a una casa editrice.\n\nKDP, Kindle Direct Publishing, è lo strumento di Amazon con cui un autore può pubblicare da sé il proprio libro, in carta e, se lo desidera, anche in digitale. Si fa dal proprio account: si caricano il manoscritto e la copertina, si scelgono formato, carta e prezzo, e si invia il volume alla revisione di Amazon. Non è una casa editrice e non è un riconoscimento: è la via tecnica per arrivare in vendita su Amazon."
+          }
+        },
+        {
+          "id": "s-ed-quote",
+          "type": "quote",
+          "visible": true,
+          "data": {
+            "quote": "Il libro resta tuo. L’account resta tuo. Le decisioni restano tue. Io ti aiuto a capire come arrivare correttamente alla pubblicazione."
+          }
+        },
+        {
+          "id": "s-ed-offer-1",
           "type": "columns",
           "visible": true,
           "data": {
-            "title": "Il percorso.",
-            "col1": "*01 · Editing*\n\nUna prima lettura del manoscritto: struttura, voce, ritmi. Si taglia ciò che pesa e si indica ciò che manca.",
-            "col2": "*02 · Correzione con report*\n\nRevisione linguistica e un report chiaro di ciò che è stato visto, corretto e lasciato in discussione.",
-            "col3": "*03 · Formattazione*\n\nIl testo viene preparato per la stampa e per i formati digitali, senza perdere la misura della pagina."
+            "title": "Cosa posso fare con te",
+            "col1": "*01 · Formattazione*\n\nPreparazione tecnica del file: formato del volume, dimensioni della pagina, margini, caratteri, corpo, interlinea, paragrafi, titoli e capitoli, interruzioni, numerazione, pagine bianche dove servono, indice. Controllo della struttura e predisposizione del documento per la stampa. Non è una revisione letteraria del contenuto.",
+            "col2": "*02 · Impaginazione*\n\nPreparazione del volume secondo le caratteristiche richieste da Amazon KDP. Pubblicare non è soltanto caricare un file: il manoscritto va disposto correttamente, perché superi i controlli tecnici della piattaforma e abbia una buona resa su carta."
           }
         },
         {
-          "id": "s-ed-path-2",
+          "id": "s-ed-offer-2",
           "type": "columns",
           "visible": true,
           "data": {
-            "col1": "*04 · Impaginazione*\n\nMargini, titoli, spazi. Un oggetto che si può sfogliare, non solo un file da scorrere.",
-            "col2": "*05 · Copertina*\n\nUn volto per il libro, sobrio e coerente con la storia. Niente formule, niente copertine di maniera.",
-            "col3": "*06 · Pubblicazione su Amazon*\n\nAccompagnamento all’uscita. Si arriva alla scheda. Non si promettono vendite, né classifiche."
+            "col1": "*03 · Copertina*\n\nRealizzazione o adattamento, quando necessario e possibile. Le misure dipendono dal formato, dal numero definitivo delle pagine, dal tipo di carta e dalle specifiche KDP: prima, quarta, dorso, posizionamento, aree di sicurezza e abbondanze, PDF finale. Non si promette un’illustrazione originale in ogni caso.",
+            "col2": "*04 · Pubblicazione guidata*\n\nTi aiuto nelle fasi su Amazon KDP, dal tuo account. L’account resta sempre personale: non pubblico io al posto tuo, né attraverso un account mio."
           }
         },
         {
-          "id": "s-ed-cta",
-          "type": "cta",
+          "id": "s-ed-timeline",
+          "type": "path",
           "visible": true,
           "data": {
-            "buttonLabel": "Scrivete in privato",
-            "buttonHref": "https://wa.me/393669240009?text=Buongiorno%2C%20scrivo%20per%20un%20accompagnamento%20editoriale."
+            "title": "Come arriviamo alla pubblicazione",
+            "lead": "Dalla ricezione del manoscritto fino all’invio ad Amazon. L’elenco è indicativo: si adatta a dove sei arrivato. Non ci sono tempi promessi, né un esito commerciale.",
+            "items": [
+              { "n": "01", "title": "Manoscritto definitivo", "body": "Si parte dal testo così come lo consegni, già scritto. Si mette in ordine ciò che serve per lavorare sul file, senza riscrivere la storia." },
+              { "n": "02", "title": "Formato e impaginazione", "body": "Si sceglie il formato del volume e si imposta la pagina: margini, caratteri, titoli, capitoli, interruzioni e numerazione." },
+              { "n": "03", "title": "File per la stampa", "body": "Si preparano i file definitivi, con la struttura adatta alla carta e ai controlli della piattaforma." },
+              { "n": "04", "title": "Copertina secondo KDP", "body": "Si prepara o si adatta la copertina alle misure richieste: prima, quarta, dorso, abbondanze e aree di sicurezza, quando serve." },
+              { "n": "05", "title": "Il tuo account Amazon KDP", "body": "Entri tu, con le tue credenziali. L’account resta tuo. Non pubblico libri per conto di terzi su un account mio." },
+              { "n": "06", "title": "Scheda del libro", "body": "Ti aiuto nella compilazione: titolo, eventuale sottotitolo, nome, descrizione, diritti, parole chiave, categorie e altre voci richieste da KDP." },
+              { "n": "07", "title": "Caratteristiche di stampa", "body": "Formato, bianco e nero o colore, carta, smarginatura quando necessaria, copertina opaca o lucida. Scegli tu." },
+              { "n": "08", "title": "Caricamento dei file", "body": "Manoscritto e copertina vengono caricati nella scheda, sul tuo account." },
+              { "n": "09", "title": "Anteprima di stampa", "body": "Si usa l’anteprima KDP per vedere come verrà il volume e per leggere gli avvisi della piattaforma." },
+              { "n": "10", "title": "Correzioni tecniche", "body": "Se KDP segnala un problema sul file, si interviene e si carica di nuovo. Resta un lavoro tecnico, non una riscrittura." },
+              { "n": "11", "title": "Prezzo e royalty", "body": "Scegli il prezzo di copertina. Costi di stampa e royalty li mostra Amazon, nella tua area. Non anticipo guadagni." },
+              { "n": "12", "title": "Invio per la revisione", "body": "Il libro viene inviato ad Amazon KDP per la revisione della piattaforma. I tempi dipendono da Amazon, non da me." },
+              { "n": "13", "title": "Dopo l’approvazione", "body": "Quando Amazon approva, ti spiego le funzioni principali a tua disposizione, comprese, quando applicabili, le copie autore e la gestione successiva del libro." }
+            ]
+          }
+        },
+        {
+          "id": "s-ed-not-instead",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Non faccio tutto al posto tuo",
+            "body": "Ti aiuto nel percorso, ma il libro resta sempre sotto il tuo controllo. L’account KDP è tuo, le credenziali restano tue, sei tu a scegliere prezzo, caratteristiche del volume e pubblicazione finale. Lo scopo è permetterti di capire ciò che stai facendo, non sostituirmi a te."
+          }
+        },
+        {
+          "id": "s-ed-not-house",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "title": "Un aiuto, non una casa editrice",
+            "body": "Non è una casa editrice, né un’agenzia letteraria. Non acquisisco diritti sulle opere, non trattengo royalty, non pubblico attraverso un account KDP mio. L’aiuto riguarda soltanto Amazon KDP. Non prometto vendite, classifiche o risultati commerciali.\n\nAmazon e Amazon KDP sono marchi dei rispettivi titolari. Questa iniziativa è indipendente e non è affiliata ad Amazon."
           }
         },
         {
@@ -1041,7 +1090,19 @@
           "type": "text",
           "visible": true,
           "data": {
-            "body": "L’accompagnamento non ha un compenso. Se volete, potete sostenere le attività dell’Associazione volontari Amici della Sicurezza Terra delle Gravine ETS."
+            "styleTheme": "note",
+            "title": "Un contributo, se vorrai",
+            "body": "Questo aiuto nasce dalla volontà di mettere a disposizione l’esperienza maturata personalmente nella pubblicazione indipendente. Non è previsto un compenso per l’aiuto ricevuto. Chi lo desidera, in piena libertà, può sostenere con un contributo volontario le attività dell’Associazione Volontari Amici della Sicurezza Terra delle Gravine ETS. Il contributo non costituisce il corrispettivo del servizio e non è condizione per ricevere assistenza."
+          }
+        },
+        {
+          "id": "s-ed-cta",
+          "type": "cta",
+          "visible": true,
+          "data": {
+            "note": "Raccontami a che punto sei, se vuoi pubblicare su Amazon: manoscritto terminato, impaginazione, copertina o pubblicazione KDP.",
+            "buttonLabel": "Parliamo del tuo libro",
+            "buttonHref": "https://wa.me/393669240009?text=Buongiorno%2C%20le%20scrivo%20per%20un%20aiuto%20sulla%20preparazione%20del%20mio%20libro%20per%20Amazon%20KDP."
           }
         }
       ]

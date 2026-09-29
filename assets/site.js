@@ -125,7 +125,9 @@
   function initEditoriaPath(visible) {
     if (reduce || isBuilder || document.body.classList.contains("is-builder")) return;
     if (document.body.getAttribute("data-page") !== "editoria") return;
-    const steps = [...document.querySelectorAll(".cms-cols > div")];
+    const offer = [...document.querySelectorAll(".cms-cols > div")];
+    const line = [...document.querySelectorAll(".ed-timeline li")];
+    const steps = offer.concat(line);
     if (!steps.length) return;
     const inView = visible || ((el) => {
       const r = el.getBoundingClientRect();
@@ -147,7 +149,8 @@
     steps.forEach((el, i) => {
       if (el.dataset.pathBound) return;
       el.dataset.pathBound = "1";
-      el.style.setProperty("--d", `${i * 0.08}s`);
+      const delay = el.closest(".ed-timeline") ? Math.min(i - offer.length, 8) * 0.05 : i * 0.08;
+      el.style.setProperty("--d", `${Math.max(0, delay)}s`);
       el.classList.add("path-wait");
     });
     requestAnimationFrame(() => {

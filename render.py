@@ -705,7 +705,8 @@ class PublicRenderer:
         )
 
     def render_cta(self, d: dict) -> str:
-        return f'<div class="container" style="padding-bottom:50px">{self.with_photo(d, self.actions(d))}</div>'
+        note = f'<p class="ed-cta-note">{esc(d.get("note"))}</p>' if d.get("note") else ""
+        return f'<div class="container cms-cta">{note}{self.with_photo(d, self.actions(d))}</div>'
 
     def render_image_text(self, d: dict) -> str:
         copy = (f'<h2>{rich(d.get("title"))}</h2>' if d.get("title") else "") + paras(d.get("body") or "")
@@ -755,6 +756,21 @@ class PublicRenderer:
         title = f'<h2>{rich(d.get("title"))}</h2>' if d.get("title") else ""
         cells = "".join(f"<div>{paras(c)}</div>" for c in cols)
         return f'<section class="container cms-columns">{title}<div class="cms-cols n-{len(cols)}">{cells}</div></section>'
+
+    def render_path(self, d: dict) -> str:
+        items = [it for it in (d.get("items") or []) if it and (it.get("title") or it.get("body"))]
+        lis = []
+        for i, it in enumerate(items):
+            n = esc(it.get("n") or f"{i + 1:02d}")
+            title = esc(it.get("title") or "")
+            body = f'<p>{esc(it.get("body"))}</p>' if it.get("body") else ""
+            lis.append(f"<li><em>{n}</em><div><h3>{title}</h3>{body}</div></li>")
+        title = f'<h2>{rich(d.get("title"))}</h2>' if d.get("title") else ""
+        lead = f'<p class="ed-timeline-lead">{esc(d.get("lead"))}</p>' if d.get("lead") else ""
+        return (
+            f'<section class="container ed-timeline">{title}{lead}'
+            f'<ol aria-label="Fasi del percorso">{"".join(lis)}</ol></section>'
+        )
 
     def render_quote(self, d: dict) -> str:
         cite = f'<cite>{esc(d.get("cite"))}</cite>' if d.get("cite") else ""
@@ -811,6 +827,7 @@ class PublicRenderer:
             "gallery": self.render_gallery,
             "video": self.render_video,
             "columns": self.render_columns,
+            "path": self.render_path,
             "quote": self.render_quote,
             "divider": self.render_divider,
         }
