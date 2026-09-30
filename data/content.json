@@ -60,19 +60,19 @@
       "id": "m-anteprima",
       "label": "Anteprima",
       "href": "romanzi/#prossimi-progetti",
-      "style": "button"
+      "style": "link"
     },
     {
       "id": "m-editoria",
       "label": "Editoria",
       "href": "editoria/",
-      "style": "button"
+      "style": "link"
     },
     {
       "id": "m-acquista",
       "label": "Acquista",
       "href": "acquista/",
-      "style": "buy"
+      "style": "link"
     }
   ],
   "footer": [
