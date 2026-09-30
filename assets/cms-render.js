@@ -204,6 +204,7 @@
         ${waHref(site) ? `<p class="footer-wa">Per presentazioni e richieste: <a href="${esc(waHref(site))}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(waPretty(site))}</a></p>` : ""}
         <nav class="footer-links" aria-label="Navigazione nel piè di pagina">${links}</nav>
       </div>
+      ${followBar(site)}
       ${shareBar()}
       <div class="footer-bottom">
         <span>${esc(site.copyright || "")}</span>
@@ -235,8 +236,27 @@
     fb: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.4V9.84c0-2.37 1.4-3.69 3.56-3.69 1.03 0 2.11.19 2.11.19v2.32h-1.19c-1.17 0-1.54.73-1.54 1.48v1.78h2.62l-.42 2.91h-2.2V22c4.78-.75 8.44-4.91 8.44-9.93z"/></svg>',
     x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-4.71-6.23-5.4 6.23H2.74l7.73-8.84L1.25 2.25h6.83l4.25 5.62 6.91-5.62zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg>',
     ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm10 2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 1.7A2.1 2.1 0 1 0 14.1 12 2.1 2.1 0 0 0 12 9.9zM17.35 6.65a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"/></svg>',
+    yt: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.48A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.12 2.12C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.48A3 3 0 0 0 23.5 17.8 31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.75 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>',
     copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 1 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
   };
+
+  function followBar(site) {
+    const networks = [
+      ["facebook", "Facebook", "share-fb", SHARE_ICONS.fb],
+      ["instagram", "Instagram", "share-ig", SHARE_ICONS.ig],
+      ["youtube", "YouTube", "share-yt", SHARE_ICONS.yt],
+    ];
+    const links = networks
+      .filter(([key]) => /^https?:\/\//i.test(String(site[key] || "").trim()))
+      .map(([key, label, cls, icon]) => (
+        `<a class="share-btn ${cls}" href="${esc(String(site[key]).trim())}" target="_blank" rel="noopener noreferrer" aria-label="Segui su ${label}">${icon}</a>`
+      ));
+    if (!links.length) return "";
+    return `<div class="footer-follow">
+      <p class="footer-share-label">Seguimi</p>
+      <nav class="share-links" aria-label="Segui Erasmo Stasolla sui social">${links.join("")}</nav>
+    </div>`;
+  }
 
   function shareBar() {
     const { url, title } = pageShare();
