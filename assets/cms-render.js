@@ -179,7 +179,7 @@
     });
     const nav = document.getElementById("main-nav");
     if (nav) {
-      nav.innerHTML = (content.menu || []).map((item) => {
+      const menuLink = (item) => {
         const raw = item.href || "";
         const slug = raw.split("#")[0].replace(/\/$/, "");
         const hash = raw.includes("#") ? raw.split("#").slice(1).join("#") : "";
@@ -191,7 +191,23 @@
         }
         const cls = item.style === "buy" ? ' class="nav-buy"' : item.style === "button" ? ' class="nav-btn"' : "";
         return `<a href="${href(item.href)}"${cls}${current}>${esc(item.label)}</a>`;
-      }).join("");
+      };
+      const parts = [];
+      let boxed = [];
+      const flushCase = () => {
+        if (!boxed.length) return;
+        parts.push(`<div class="nav-case" role="group" aria-label="Sezioni">${boxed.join("")}</div>`);
+        boxed = [];
+      };
+      (content.menu || []).forEach((item) => {
+        if (item.style === "button" || item.style === "buy") boxed.push(menuLink(item));
+        else {
+          flushCase();
+          parts.push(menuLink(item));
+        }
+      });
+      flushCase();
+      nav.innerHTML = parts.join("");
     }
     const footer = document.querySelector(".site-footer");
     if (footer) {
