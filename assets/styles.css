@@ -119,9 +119,8 @@ h1,h2,h3,.seller-name,.press-strip p{overflow-wrap:anywhere}
 .cms-styled.align-center .actions,.cms-styled.align-center .section-head{justify-content:center}
 .cms-styled.width-narrow .container{width:min(720px,calc(100% - 40px))}
 .cms-styled.width-wide .container{width:min(1400px,calc(100% - 32px))}
-body.btn-rounded .button,body.btn-rounded .nav-case,body.btn-rounded .menu-button{border-radius:10px}
-body.btn-pill .button,body.btn-pill .nav-case,body.btn-pill .menu-button{border-radius:999px}
-body.btn-rounded .nav-case,body.btn-pill .nav-case{overflow:hidden}
+body.btn-rounded .button,body.btn-rounded .nav-case a,body.btn-rounded .menu-button{border-radius:10px}
+body.btn-pill .button,body.btn-pill .nav-case a,body.btn-pill .menu-button{border-radius:999px}
 @media(max-width:800px){
   .sec-with-image.side-right,.sec-with-image.side-left{grid-template-columns:1fr}
   .sec-photo img{aspect-ratio:4/3}
@@ -452,11 +451,10 @@ body:after{
 
 .nav-case{
   display:flex;
-  align-items:stretch;
+  align-items:center;
   flex:0 0 auto;
-  margin-left:6px;
-  border:1px solid var(--ink);
-  background:transparent;
+  gap:10px;
+  margin-left:8px;
 }
 .nav-case a{
   position:relative;
@@ -464,23 +462,23 @@ body:after{
   align-items:center;
   justify-content:center;
   margin:0;
-  padding:9px 16px;
-  min-height:40px;
-  border:0;
-  border-right:1px solid var(--ink);
+  padding:10px 18px;
+  min-height:38px;
+  border:1px solid var(--ink);
   background:transparent;
   color:var(--ink);
-  font-size:.875rem;
-  letter-spacing:.04em;
+  font-size:.78rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
   white-space:nowrap;
-  transition:background .4s cubic-bezier(.16,1,.3,1),color .4s cubic-bezier(.16,1,.3,1);
+  transition:background .4s cubic-bezier(.16,1,.3,1),color .4s cubic-bezier(.16,1,.3,1),border-color .4s cubic-bezier(.16,1,.3,1);
 }
-.nav-case a:last-child{border-right:0}
 .nav-case a:after{
   content:"";
   position:absolute;
-  left:16px;
-  right:16px;
+  left:18px;
+  right:18px;
   bottom:8px;
   height:1px;
   background:var(--red);
@@ -490,7 +488,7 @@ body:after{
 }
 .nav-case a:not(.nav-buy):hover,
 .nav-case a:not(.nav-buy):focus-visible{
-  background:#141b210a;
+  background:#141b2108;
 }
 .nav-case a:not(.nav-buy):hover:after,
 .nav-case a:not(.nav-buy):focus-visible:after,
@@ -500,45 +498,41 @@ body:after{
 .nav .nav-case .nav-buy,
 .nav-case .nav-buy{
   margin:0;
-  padding:9px 18px;
-  border:0;
+  padding:10px 20px;
+  border-color:var(--ink);
   background:var(--ink);
   color:var(--paper);
 }
 .nav .nav-case .nav-buy:hover,
 .nav-case .nav-buy:hover,
-.nav-case .nav-buy:focus-visible,
-.nav-case .nav-buy[aria-current=page]{
-  background:#2c343b;
+.nav-case .nav-buy:focus-visible{
+  background:#2a3238;
+  border-color:#2a3238;
   color:var(--paper);
 }
-.nav-case .nav-buy:after{background:var(--paper)}
-.nav-case .nav-buy:hover:after,
-.nav-case .nav-buy:focus-visible:after,
-.nav-case .nav-buy[aria-current=page]:after{
-  transform:scaleX(1);
-}
+.nav-case .nav-buy:after{display:none}
 @media(max-width:1100px){
-  .nav-case{margin-left:0}
-  .nav-case a{padding:9px 13px;letter-spacing:.02em}
+  .nav-case{margin-left:0;gap:8px}
+  .nav-case a{padding:9px 13px;letter-spacing:.08em;font-size:.72rem}
+  .nav .nav-case .nav-buy{padding:9px 15px}
 }
 @media(max-width:800px){
   .nav-case{
     flex-direction:column;
+    align-items:stretch;
     width:100%;
-    margin:12px 0 4px;
+    gap:8px;
+    margin:14px 0 6px;
   }
   .nav-case a,
   .nav .nav-case .nav-buy{
-    border-right:0;
-    border-bottom:1px solid var(--ink);
-    justify-content:flex-start;
-    padding:14px 16px;
+    justify-content:center;
+    padding:13px 16px;
     min-height:48px;
-    letter-spacing:.06em;
+    letter-spacing:.12em;
+    font-size:.78rem;
   }
-  .nav-case a:last-child{border-bottom:0}
-  .nav-case a:after{left:16px;right:auto;width:2.4em;bottom:12px}
+  .nav-case a:after{left:50%;right:auto;width:2.2em;margin-left:-1.1em;bottom:11px}
 }
 
 .upcoming-projects{scroll-margin-top:110px}
